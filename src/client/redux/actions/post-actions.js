@@ -1,4 +1,4 @@
-ƒƒimport { PAGES } from '../../routes/pages';
+import { PAGES } from '../../routes/pages';
 
 export const POST_TYPES = {
   FETCH_POSTS_START: 'FETCH_POSTS_START',
