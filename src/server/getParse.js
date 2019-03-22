@@ -35,10 +35,7 @@ const getFromParser = async () => {
         params: {
           filters: {
             page: 1,
-            limit: 100,
-            client_code: [
-              '1'
-            ]
+            limit: 100
           },
           sources: {
             add: true,
@@ -48,6 +45,7 @@ const getFromParser = async () => {
       })
     });
     const productsObj = await products.json();
+    console.log(productsObj);
     for (const item of productsObj.result.objects) { // eslint-disable-line
       const test = await Product.findOne({ name: item.name }); // eslint-disable-line
       if (test === null) {
