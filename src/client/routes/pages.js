@@ -1,6 +1,10 @@
 export const PAGES = {
   home: {
     name: 'home',
+    path: '/home'
+  },
+  card: {
+    name: 'card',
     path: '/'
   },
   info: {
