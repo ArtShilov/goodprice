@@ -33,6 +33,11 @@ export default class HomePage extends Component {
     ]
   }
 
+  componentDidMount() {
+    this.getProducts();
+		// console.log('TCL: HomePage -> componentDidMount -> getProducts', this.getProducts());    
+  }
+
   viewCards = () => {
     const { products } = this.state;
     return products.map(item => (
@@ -43,7 +48,7 @@ export default class HomePage extends Component {
   viewSubFilter = () => {
     const subFilters = [];
     for (let i = 0; i < 6; i++) {
-      subFilters.push(<SubFilter></SubFilter>);
+      subFilters.push(<SubFilter key={i}></SubFilter>);
     }
     return subFilters;
   }
@@ -52,6 +57,7 @@ export default class HomePage extends Component {
     try {
       const products = await fetch('api/products');
       const productsArray = await products.json();
+      
       this.setState({ products: productsArray });
     } catch (e) {
       console.error(e);
