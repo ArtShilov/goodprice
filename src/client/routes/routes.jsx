@@ -7,6 +7,7 @@ import HomePage from '../components/home-page/home-page';
 import InfoPage from '../components/info-page/info-page';
 import Page404 from '../components/page404/page404';
 import Login from '../components/login';
+import CardProduct from '../components/card-product/card-product';
 
 const WrappedApp = (Component, props) => (
   <App appName='Fancy React Redux App'>
@@ -16,6 +17,10 @@ const WrappedApp = (Component, props) => (
 
 export default () => (
   <Switch>
+    <Route
+      exact path={ PAGES.card.path }
+      render={ props => WrappedApp(CardProduct, props) }
+    />
     <Route
       exact path={ PAGES.home.path }
       render={ props => WrappedApp(HomePage, props) }
