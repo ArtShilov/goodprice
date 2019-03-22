@@ -56,14 +56,14 @@ export default class CardProductPage extends Component {
             </div>
           </div>
           <div className="xf-product__title xf-product-title">
-            <a href="/catalog/moloko-syr-yaytsa/tvorog-syrki/lactica-tvorog-myagk-diet-obezj-4-5-120g--314412"
-              className="xf-product-title__link js-product__title" title="Творог Lactica мягкий 4.5% 120г">
-              Творог Lactica мягкий 4.5% 120г
+            <a href={this.props.href}
+              className="xf-product-title__link js-product__title" title={this.props.name}>
+              {this.props.name}
         </a>
           </div>
           <div className="xf-product__cost xf-product-cost">
             <div className="xf-price xf-product-cost__current js-product__cost " data-cost="37.9" data-type="шт">
-              <span className="xf-price__rouble">37</span>
+              <span className="xf-price__rouble">{this.props.price}</span>
               <span className="xf-price__penny">,90 &nbsp;</span>
               <span className="xf-price__unit">
                 р/шт

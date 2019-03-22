@@ -1,0 +1,19 @@
+.home-page {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.cards-products {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.market-filter{
+  margin-right: 5px;
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+}
+
+.fa-shopping-bag{
+  color: #B2D136;
+}

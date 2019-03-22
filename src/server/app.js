@@ -9,6 +9,8 @@ import router from './router';
 
 const winston = require('winston');
 const expressWinston = require('express-winston');
+const mongoose = require('mongoose');
+
 
 const app = express();
 // parse application/x-www-form-urlencoded
@@ -17,7 +19,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
+const db = mongoose.connect(
+  'mongodb://localhost:27017/goodPrice',
+  {
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useCreateIndex: true
+  }
+);
+
 const { buildConfig: { assetsDir, targetDir }, server: { port }, proxyAssets } = config;
+
+app.use('/api2', proxy({ target: 'https://api.priceva.com/api/v1/product/list', changeOrigin: true }));
 
 if (config.appModeDev) {
   app.use(
