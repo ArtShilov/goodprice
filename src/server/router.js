@@ -1,12 +1,14 @@
 import express from 'express';
 
+const Product = require('./models/product');
+const Shops = require('./models/shops');
+
 const router = express.Router();
 
-router.get('/user', (req, res) => {
-  setTimeout(() => res.send({
-    name: 'Michael',
-    email: 'mk@elbrusboot.camp'
-  }), 1000);
+router.get('/products', async (req, res) => {
+  const products = await Product.find();
+  res.status(200);
+  res.send(products);
 });
 
 router.get('/posts', (req, res) => {
