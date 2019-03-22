@@ -1,6 +1,53 @@
 import React, { Component } from 'react';
+import CardProduct from '../card-product/card-product';
+import SubFilter from '../sub-filter/sub-filter';
+import './home-page.css';
 
 export default class HomePage extends Component {
+  state = {
+    products: [
+      {
+        _id: '5c94bef5d877e4c13fe272a5',
+        lastSync: '2019-03-22T10:54:45.293Z',
+        lowPrice: 202,
+        name: 'Масло из Вологды сливочное Вологодское 82,5%, 180г',
+        rating: 5,
+        length: 1
+      },
+      {
+        _id: '5c94bef5d877e4c13fe272a7',
+        lastSync: '2019-03-22T10:54:45.293Z',
+        lowPrice: 202,
+        name: 'Масло из Вологды сливочное Вологодское 82,5%, 180г',
+        rating: 5,
+        length: 1
+      },
+      {
+        _id: '5c94bef5d877e4c13fe272a6',
+        lastSync: '2019-03-22T10:54:45.293Z',
+        lowPrice: 202,
+        name: 'Масло из Вологды сливочное Вологодское 82,5%, 180г',
+        rating: 5,
+        length: 1
+      }
+    ]
+  }
+
+  viewCards = () => {
+    const { products } = this.state;
+    return products.map(item => (
+      <CardProduct name={item.name} price={item.lowPrice} />
+    ));
+  }
+
+  viewSubFilter = () => {
+    const subFilters = [];
+    for (let i = 0; i < 6; i++) {
+      subFilters.push(<SubFilter></SubFilter>);
+    }
+    return subFilters;
+  }
+
   getProducts = async () => {
     try {
       const products = await fetch('api/products');
@@ -11,19 +58,18 @@ export default class HomePage extends Component {
     }
   };
 
-
   render() {
     return (
       <div className='home-page'>
-        <button onClick={ this.getProducts } >get</button>
-        <h1>Home Page</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+        <div>
+          <h1 className="market-filter"><i className="fas fa-shopping-bag"></i>Maгазины</h1>
+          <ul className="xf-catalog-market-list">
+            {this.viewSubFilter()}
+          </ul>
+        </div>
+        <div className='cards-products'>
+          {this.viewCards()}
+        </div>
       </div>
     );
   }

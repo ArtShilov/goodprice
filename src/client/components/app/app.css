@@ -6,6 +6,11 @@ body {
   margin: 0;
 }
 
+.container{
+  margin: 0 auto;
+  width: 965px;
+}
+
 form {
   position: relative;
   width: 300px;

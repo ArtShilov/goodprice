@@ -45,7 +45,7 @@ class App extends Component {
       children
     } = this.props;
     return (
-      <div className={cn()}>
+      <div className="container">
         <div className="header d1">
           <img src="#" alt="logo" />
           <form>
