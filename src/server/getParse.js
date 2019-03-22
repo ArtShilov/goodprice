@@ -13,16 +13,17 @@ const db = mongoose.connect(
 );
 
 let i = 0;
-const images = ['https://www.perekrestok.ru/src/product.file/full/image/18/32/43218.jpeg',
-  'https://www.perekrestok.ru/src/product.file/full/image/67/58/75867.jpeg',
-  'https://www.perekrestok.ru/src/product.file/full/image/61/45/54561.jpeg',
-  'https://www.perekrestok.ru/src/product.file/full/image/65/61/76165.jpeg',
-  'https://www.perekrestok.ru/src/product.file/full/image/30/18/91830.jpeg',
-  'https://www.utkonos.ru/resample/900x900q80/images/photo/3288/3288600H.jpg',
-  'https://www.utkonos.ru/images/photo/3118/3118766H.jpg',
-  'https://www.perekrestok.ru/src/product.file/full/image/71/21/12171.jpeg',
-  'https://www.perekrestok.ru/src/product.file/full/image/47/96/89647.jpeg',
-  'https://www.perekrestok.ru/src/product.file/full/image/77/37/83777.jpeg'
+const images = [
+  'https://www.perekrestok.ru/src/product.file/list/image/33/48/94833.jpeg',
+  'https://www.perekrestok.ru/src/product.file/list/image/87/58/75887.jpeg',
+  'https://www.perekrestok.ru/src/product.file/list/image/61/45/54561.jpeg',
+  'https://www.perekrestok.ru/src/product.file/list/image/46/80/18046.jpeg',
+  'https://www.perekrestok.ru/src/product.file/list/image/09/57/75709.jpeg',
+  'https://www.perekrestok.ru/src/product.file/list/image/33/62/96233.jpeg',
+  'https://www.perekrestok.ru/src/product.file/list/image/86/77/17786.jpeg',
+  'https://www.perekrestok.ru/src/product.file/list/image/71/21/12171.jpeg',
+  'https://www.perekrestok.ru/src/product.file/list/image/47/96/89647.jpeg',
+  'https://www.perekrestok.ru/src/product.file/list/image/77/37/83777.jpeg'
 ];
 
 
@@ -35,10 +36,7 @@ const getFromParser = async () => {
         params: {
           filters: {
             page: 1,
-            limit: 100,
-            client_code: [
-              '1'
-            ]
+            limit: 100
           },
           sources: {
             add: true,
@@ -48,6 +46,7 @@ const getFromParser = async () => {
       })
     });
     const productsObj = await products.json();
+    console.log(productsObj);
     for (const item of productsObj.result.objects) { // eslint-disable-line
       const test = await Product.findOne({ name: item.name }); // eslint-disable-line
       if (test === null) {
