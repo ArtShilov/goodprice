@@ -12,6 +12,10 @@ export default class HomePage extends Component {
     this.getProducts();
   }
 
+  componentDidMount() {
+    this.getProducts();
+  }
+
   viewCards = () => {
     const { products } = this.state;
     return products.map(item => (
@@ -27,6 +31,7 @@ export default class HomePage extends Component {
     return subFilters;
   }
 
+
   getProducts = async () => {
     try {
       const products = await fetch('api/products');
@@ -38,9 +43,35 @@ export default class HomePage extends Component {
     }
   };
 
+  // test = async () => {
+  //   try {
+  //     const products = await fetch('api2', {
+  //       method: 'POST',
+  //       headers: { Apikey: 'lK8nk2JQdQOK4bkv4ImomBhxMWKSG2X6' },
+  //       body: JSON.stringify({
+  //         params: {
+  //           filters: {
+  //             page: 1,
+  //             limit: 100
+  //           },
+  //           sources: {
+  //             add: true,
+  //             add_term: true
+  //           }
+  //         }
+  //       })
+  //     });
+  //     const productsObj = await products.json();
+  //     console.log(productsObj);
+  //   } catch (e) {
+  //     console.error(e);
+  //   }
+  // };
+
   render() {
     return (
       <div className='home-page'>
+        {/* <button onClick={this.test}>test</button> */}
         <div>
           <h1 className="market-filter"><i className="fas fa-shopping-bag"></i>Maгазины</h1>
           <ul className="xf-catalog-market-list">
