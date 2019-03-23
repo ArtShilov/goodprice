@@ -45,7 +45,7 @@ const getFromParser = async () => {
       })
     });
     const productsObj = await products.json();
-    console.log(productsObj);
+    // console.log(productsObj);
     for (const item of productsObj.result.objects) { // eslint-disable-line
       const test = await Product.findOne({ name: item.name }); // eslint-disable-line
       if (test === null) {
@@ -60,8 +60,10 @@ const getFromParser = async () => {
       }
         const savedProduct = await Product.findOne({ name: item.name }); // eslint-disable-line
       for (const shopItem of item.sources) { // eslint-disable-line
-        const testShop = await Shops.findOne({ name: shopItem.company_name });
+        // console.log(shopItem);
+        const testShop = await Shops.findOne({ name: shopItem.company_name, product_id: savedProduct._id });
         if (testShop === null) {
+          console.log(shopItem.price.toFixed(2));
           const shop = new Shops({
             name: shopItem.company_name,
             price: shopItem.price,
@@ -70,6 +72,7 @@ const getFromParser = async () => {
           product_id: savedProduct._id, // eslint-disable-line
             link: shopItem.url
           });
+          // console.log(shop);
           shop.save();
         } else if ((testShop.price !== shopItem.price) || (testShop.presence !== shopItem.in_stock)) {
           Product.findOneAndUpdate({ _id: testShop._id }, { price:shopItem.price, presence:shopItem.in_stock  }); // eslint-disable-line
@@ -87,6 +90,7 @@ getFromParser();
 
 const setLowerPrice = async () => {
   const products = await Product.find();
+  // console.log(products);
   for (const item of products) { // eslint-disable-line
     const shops = await Shops.find({ product_id: item._id });
     let lowPrice = 0;
@@ -95,7 +99,8 @@ const setLowerPrice = async () => {
         lowPrice = shopItem.price;
       }
     }
-    Product.findOneAndUpdate({ _id: item._id }, { lowPrice }); // eslint-disable-line
+    // console.log(lowPrice);
+    await Product.findOneAndUpdate({ _id: item._id }, { lowPrice }); // eslint-disable-line
   }
 };
 
