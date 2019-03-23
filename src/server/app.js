@@ -5,11 +5,17 @@ import proxy from 'http-proxy-middleware';
 import handlebars from 'handlebars';
 import bodyParser from 'body-parser';
 import config from './config/default';
-import router from './router';
+import router from './routes/router';
+import user from './routes/user';
+
 
 const winston = require('winston');
 const expressWinston = require('express-winston');
 const mongoose = require('mongoose');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+const passport = require('passport');
+const exphbs = require('express-handlebars');
 
 
 const app = express();
@@ -19,6 +25,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
+
 const db = mongoose.connect(
   'mongodb://localhost:27017/goodPrice',
   {
@@ -27,6 +34,41 @@ const db = mongoose.connect(
     useCreateIndex: true
   }
 );
+
+require('./authentication').init(app);
+
+app.use(session({
+  store: new MongoStore({
+    mongooseConnection: mongoose.connection,
+    collection: 'session',
+    autoRemove: 'interval',
+    autoRemoveInterval: 120
+  }),
+  key: 'user_sid',
+  secret: 'anything here',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    expires: 6000000
+  }
+}));
+
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+app.engine('.hbs', exphbs({
+  defaultLayout: 'layout',
+  extname: '.hbs',
+  layoutsDir: path.join(__dirname, 'views'),
+  partialsDir: path.join(__dirname)
+}));
+
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
+
 
 const { buildConfig: { assetsDir, targetDir }, server: { port }, proxyAssets } = config;
 
@@ -58,6 +100,7 @@ app.use(expressWinston.logger({
 }));
 
 app.use('/api', router);
+app.use('/user', user);
 
 app.use('*', (req, res) => {
   const template = handlebars.compile(fs.readFileSync(

@@ -12,10 +12,6 @@ export default class HomePage extends Component {
     this.getProducts();
   }
 
-  componentDidMount() {
-    this.getProducts();
-  }
-
   viewCards = () => {
     const { products } = this.state;
     return products.map(item => (

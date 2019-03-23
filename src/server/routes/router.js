@@ -1,7 +1,7 @@
 import express from 'express';
 
-const Product = require('./models/product');
-const Shops = require('./models/shops');
+const Product = require('../models/product');
+const Shops = require('../models/shops');
 
 const router = express.Router();
 
