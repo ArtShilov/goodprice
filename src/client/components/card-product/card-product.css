@@ -16,6 +16,7 @@ body{
 
 .xf-catalog__item {
   margin-left: 20px;
+  margin-bottom: 20px;
   border: 1px solid #e5e5e5;
   border-radius: 4px;
   width: 220px;

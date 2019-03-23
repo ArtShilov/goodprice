@@ -25,7 +25,7 @@ export default class CardProductPage extends Component {
               className="xf-product-picture__link js-product__image">
               <img data-src="/src/product.file/list/image/14/14/21414.jpeg"
                 className="js-lazy swiper-lazy xf-product-picture__img "
-                src="https://www.perekrestok.ru/src/product.file/list/image/14/14/21414.jpeg" />
+                src={this.props.img} />
             </a>
           </div>
           <div className="xf-product__favorite-rating-line">
