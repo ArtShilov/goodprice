@@ -5,45 +5,24 @@ import './home-page.css';
 
 export default class HomePage extends Component {
   state = {
-    products: [
-      {
-        _id: '5c94bef5d877e4c13fe272a5',
-        lastSync: '2019-03-22T10:54:45.293Z',
-        lowPrice: 202,
-        name: 'Масло из Вологды сливочное Вологодское 82,5%, 180г',
-        rating: 5,
-        length: 1
-      },
-      {
-        _id: '5c94bef5d877e4c13fe272a7',
-        lastSync: '2019-03-22T10:54:45.293Z',
-        lowPrice: 202,
-        name: 'Масло из Вологды сливочное Вологодское 82,5%, 180г',
-        rating: 5,
-        length: 1
-      },
-      {
-        _id: '5c94bef5d877e4c13fe272a6',
-        lastSync: '2019-03-22T10:54:45.293Z',
-        lowPrice: 202,
-        name: 'Масло из Вологды сливочное Вологодское 82,5%, 180г',
-        rating: 5,
-        length: 1
-      }
-    ]
+    products: []
+  }
+
+  componentDidMount() {
+    this.getProducts();
   }
 
   viewCards = () => {
     const { products } = this.state;
     return products.map(item => (
-      <CardProduct name={item.name} price={item.lowPrice} />
+      <CardProduct img={item.img} name={item.name} price={item.lowPrice} />
     ));
   }
 
   viewSubFilter = () => {
     const subFilters = [];
     for (let i = 0; i < 6; i++) {
-      subFilters.push(<SubFilter></SubFilter>);
+      subFilters.push(<SubFilter key={i}></SubFilter>);
     }
     return subFilters;
   }
@@ -52,6 +31,7 @@ export default class HomePage extends Component {
     try {
       const products = await fetch('api/products');
       const productsArray = await products.json();
+
       this.setState({ products: productsArray });
     } catch (e) {
       console.error(e);
@@ -66,9 +46,43 @@ export default class HomePage extends Component {
           <ul className="xf-catalog-market-list">
             {this.viewSubFilter()}
           </ul>
+          <ul className="xf-b js-xf-b _catalog-under-filters" data-id="block_19">
+            <li className="js-xf-carousel__item swiper-slide" data-id="banner__1182">
+              <a href="/catalog/krasota-gigiena-bytovaya-himiya/sredstva-lichnoy-gigieny/podguzniki-dlya-vzroslyh/terezal-prokl-micro-ur-jen-24sht--459871">
+                <img src="https://www.perekrestok.ru/src/banner/77/42/4277.png" className="banner-img" />
+              </a>
+            </li>
+          </ul>
         </div>
-        <div className='cards-products'>
-          {this.viewCards()}
+        <div>
+          <div className='cards-products'>
+            {this.viewCards()}
+          </div>
+          <aside class="xf-paginator  js-paginator " data-count="1815">
+            <div class="xf-paginator__more-wrap">
+              <button type="button" class="xf-paginator__more js-paginator__more-btn">Показать еще товары</button>
+            </div>
+            <div class="xf-paginator__items-wrap">
+              <div class="xf-paginator__items">
+                <a href="#&amp;page=2&amp;sort=rate_desc" class="xf-paginator__item js-paginator__prev">
+                  <svg id="xf-svg__previous" viewBox="0 0 32 32" width="100%" height="100%">
+                    <title>previous</title>
+                    <path d="M23.2 31.467c0.533 0 1.067-0.133 1.467-0.533 0.8-0.8 0.8-2 0-2.8l-12.4-12.4 12.4-12.4c0.8-0.8 0.8-2 0-2.8s-2-0.8-2.8 0l-15.2 15.2 15.2 15.2c0.4 0.4 0.8 0.533 1.333 0.533z"></path>
+                  </svg>
+                </a>
+                <a href="/catalog/moloko-syr-yaytsa&amp;page=2&amp;sort=rate_desc" class="xf-paginator__item js-paginator__btn" data-type="btn">1</a>
+                <a href="/catalog/moloko-syr-yaytsa?page=2&amp;page=2&amp;sort=rate_desc" class="xf-paginator__item js-paginator__btn _active" data-type="btn">2</a>
+                <a href="/catalog/moloko-syr-yaytsa?page=3&amp;page=2&amp;sort=rate_desc" class="xf-paginator__item js-paginator__btn" data-type="btn">3</a>
+                <a href="/catalog/moloko-syr-yaytsa?page=4&amp;page=2&amp;sort=rate_desc" class="xf-paginator__item js-paginator__btn" data-type="btn">4</a>
+                <a href="http://www.perekrestok.ru/catalog/moloko-syr-yaytsa?page=2&amp;page=2&amp;sort=rate_desc" class="xf-paginator__item js-paginator__next" rel="next">
+                  <svg id="xf-svg__next" viewBox="0 0 32 32" width="100%" height="100%">
+                    <title>next</title>
+                    <path d="M8.667 31.467c-0.533 0-1.067-0.133-1.467-0.533-0.8-0.8-0.8-2 0-2.8l12.4-12.4-12.4-12.4c-0.8-0.667-0.8-2 0-2.8s2.133-0.8 2.933 0l15.2 15.2-15.2 15.2c-0.4 0.4-0.933 0.533-1.467 0.533z"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </aside>
         </div>
       </div>
     );
