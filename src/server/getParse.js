@@ -1,7 +1,6 @@
-import secret from './config/secret';
-
 const fetch = require('node-fetch');
 const mongoose = require('mongoose');
+const secret = require('./config/secret');
 const Product = require('./models/product');
 const Shops = require('./models/shops');
 
