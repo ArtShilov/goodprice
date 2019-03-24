@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './card-product.css';
+import { Route, Redirect, Link } from 'react-router-dom';
 // import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
 // import { inputTextAC } from '../../redux/actions/head-actions';
@@ -15,22 +16,29 @@ import './card-product.css';
 // }, dispatch);
 
 export default class CardProductPage extends Component {
+  // openBigProduct = (id) => {
+  //   console.log('test');
+  //   <Redirect path='/'/>;
+  //   // this.props.history.push('/');
+  // }
+
   render() {
     return (
       <div className="js-catalog-product _additionals xf-catalog__item" data-id="314412">
         <div className="xf-product js-product  " data-id="314412" data-url="https://www.perekrestok.ru/catalog/314412/quickView"
           id="ui-id-5">
           <div className="xf-product__picture xf-product-picture">
-            <a href="/catalog/moloko-syr-yaytsa/tvorog-syrki/lactica-tvorog-myagk-diet-obezj-4-5-120g--314412"
-              className="xf-product-picture__link js-product__image">
+            {/* <a href="/catalog/moloko-syr-yaytsa/tvorog-syrki/lactica-tvorog-myagk-diet-obezj-4-5-120g--314412" */}
+            <Link to={`/home/${this.props.id}`} className="xf-product-picture__link js-product__image">
               <img data-src="/src/product.file/list/image/14/14/21414.jpeg"
                 className="js-lazy swiper-lazy xf-product-picture__img "
                 src={this.props.img} />
-            </a>
+                </Link>
+
           </div>
           <div className="xf-product__favorite-rating-line">
             <a href="/catalog/moloko-syr-yaytsa/tvorog-syrki/lactica-tvorog-myagk-diet-obezj-4-5-120g--314412/reviews"
-              className="xf-product__rating xf-product-rating _link">
+             className="xf-product__rating xf-product-rating _link">
               <div className="xf-product__rating xf-product-rating  ">
                 <ul className="xf-product-rating__stars">
                   <li className="xf-product-rating__star _active">
@@ -50,7 +58,7 @@ export default class CardProductPage extends Component {
                   </li>
                 </ul><span className="xf-product-rating__count _short">2</span>
               </div>
-            </a>
+              </a>
             <div className="xf-product__favorite xf-product-favorite js-product__favorite " data-key="favorites">
               <i className="fas fa-heart"></i>
             </div>
