@@ -1,10 +1,11 @@
 const fetch = require('node-fetch');
 const mongoose = require('mongoose');
+const secret = require('./config/secret');
 const Product = require('./models/product');
 const Shops = require('./models/shops');
 
-const db = mongoose.connect(
-  'mongodb://localhost:27017/goodPrice',
+const db = mongoose.connect( // eslint-disable-line
+  secret.database,
   {
     useNewUrlParser: true,
     useFindAndModify: false,
@@ -62,9 +63,11 @@ const getFromParser = async () => {
         const savedProduct = await Product.findOne({ name: item.name }); // eslint-disable-line
       for (const shopItem of item.sources) { // eslint-disable-line
         // console.log(shopItem);
-        const testShop = await Shops.findOne({ name: shopItem.company_name, product_id: savedProduct._id });
+        const testShop = await Shops.findOne({ // eslint-disable-line
+          name: shopItem.company_name,
+          product_id: savedProduct._id // eslint-disable-line
+        });
         if (testShop === null) {
-          console.log(shopItem.price.toFixed(2));
           const shop = new Shops({
             name: shopItem.company_name,
             price: shopItem.price,
@@ -75,7 +78,8 @@ const getFromParser = async () => {
           });
           // console.log(shop);
           shop.save();
-        } else if ((testShop.price !== shopItem.price) || (testShop.presence !== shopItem.in_stock)) {
+        } else if ((testShop.price !== shopItem.price)
+        || (testShop.presence !== shopItem.in_stock)) {
           Product.findOneAndUpdate({ _id: testShop._id }, { price:shopItem.price, presence:shopItem.in_stock  }); // eslint-disable-line
         }
       }
@@ -93,7 +97,7 @@ const setLowerPrice = async () => {
   const products = await Product.find();
   // console.log(products);
   for (const item of products) { // eslint-disable-line
-    const shops = await Shops.find({ product_id: item._id });
+    const shops = await Shops.find({ product_id: item._id }); // eslint-disable-line
     let lowPrice = 0;
     for (const shopItem of shops) { // eslint-disable-line
       if (shopItem.price > lowPrice) {

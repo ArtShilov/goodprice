@@ -12,20 +12,16 @@ export default class HomePage extends Component {
     this.getProducts();
   }
 
-  componentDidMount() {
-    this.getProducts();
-  }
-
   viewCards = () => {
     const { products } = this.state;
     return products.map(item => (
-      <CardProduct key={item.id} img={item.img} name={item.name} price={item.lowPrice} />
+      <CardProduct key={item._id} img={item.img} name={item.name} price={item.lowPrice} /> // eslint-disable-line
     ));
   }
 
   viewSubFilter = () => {
     const subFilters = [];
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 6; i += 1) {
       subFilters.push(<SubFilter key={i}></SubFilter>);
     }
     return subFilters;
