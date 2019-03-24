@@ -5,6 +5,7 @@ import proxy from 'http-proxy-middleware';
 import handlebars from 'handlebars';
 import bodyParser from 'body-parser';
 import config from './config/default';
+import secret from './config/secret';
 import router from './routes/router';
 import user from './routes/user';
 
@@ -26,8 +27,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
-const db = mongoose.connect(
-  'mongodb://localhost:27017/goodPrice',
+const db = mongoose.connect( // eslint-disable-line
+  secret.database,
   {
     useNewUrlParser: true,
     useFindAndModify: false,

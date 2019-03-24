@@ -1,3 +1,5 @@
+import secret from '../config/secret';
+
 const passport = require('passport');
 const bcrypt = require('bcrypt');
 const LocalStrategy = require('passport-local').Strategy;
@@ -5,67 +7,40 @@ const FacebookStrategy = require('passport-facebook').Strategy;
 const Users = require('../models/users');
 const authenticationMiddleware = require('./middleware');
 
-// Generate Password
-// const saltRounds = 10;
-// const myPlaintextPassword = 'my-password';
-// const salt = bcrypt.genSaltSync(saltRounds);
-// const passwordHash = bcrypt.hashSync(myPlaintextPassword, salt);
-
-// const user = {
-//   username: 'test-user',
-//   passwordHash,
-//   id: 1
-// };
-
 async function findUser(username, callback) {
-  console.log(username);
-  const user = await Users.findOne({ username });
+  let user = await Users.findOne({ username });
   if (user !== null) {
     return callback(null, user);
   }
+  user = await Users.findOne({ facebook: username });
+  if (user !== null) {
+    return callback(null, user);
+  }
+
   return callback(null);
 }
-
-// passport.serializeUser((user, cb) => {
-//   cb(null, user.username);
-// });
-
-// passport.deserializeUser((username, cb) => {
-//   findUser(username, cb);
-// });
-
-// passport.deserializeUser((username, cb) => {
-//   cb(null, user.username);
-// });
 
 passport.serializeUser((user, done) => {
   done(null, user);
 });
 
 passport.deserializeUser((user, done) => {
-  done(null, user);
+  findUser(user.id, done);
 });
 
 
 function initPassport() {
-  console.log('started')
   passport.use(new LocalStrategy(
     (username, password, done) => {
-      findUser(username, (err, user) => {
+      findUser(username, (err, user) => { // eslint-disable-line
         if (err) {
           return done(err);
         }
-
-        // User not found
         if (!user) {
           console.log('User not found');
           return done(null, false);
         }
-
-        // Always use hashed passwords and fixed time comparison
-        console.log(user);
-        console.log(password);
-        bcrypt.compare(password, user.password, (err, isValid) => {
+        bcrypt.compare(password, user.password, (err, isValid) => { // eslint-disable-line
           if (err) {
             return done(err);
           }
@@ -79,11 +54,23 @@ function initPassport() {
   ));
 
   passport.use(new FacebookStrategy({
-    clientID: 323415254981227,
-    clientSecret: '49978be6766f60e7ab02b9abe984f926',
+    clientID: secret.facebook_api_id,
+    clientSecret: secret.facebook_api_secret,
     callbackURL: '/user/auth/facebook/callback'
   },
-  ((accessToken, refreshToken, profile, done) => {
+  (async (accessToken, refreshToken, profile, done) => {
+    const user = await Users.findOne({ facebook: profile.id });
+    if (!user) {
+      try {
+        const user = new Users({ // eslint-disable-line
+          facebook: profile.id,
+          username: profile.displayName
+        });
+        await user.save();
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
     process.nextTick(() => done(null, profile));
   })));
 

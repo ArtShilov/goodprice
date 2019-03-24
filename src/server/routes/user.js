@@ -25,7 +25,6 @@ function renderProfile(req, res) {
 router.get('/login', renderWelcome);
 router.get('/profile', authenticationMiddleware(), renderProfile);
 router.get('/auth/facebook', passport.authenticate('facebook'));
-debugger;
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/user/profile',
   failureRedirect: '/user/login'
@@ -52,11 +51,11 @@ router.post('/signup', async (req, res, next) => {
   }
 });
 
-router.get('/signup', (req, res, next) => {
+router.get('/signup', (req, res, next) => { // eslint-disable-line
   res.render('signup', { user: req.session.user });
 });
 
-router.get('/logout', (req, res, next) => {
+router.get('/logout', (req, res, next) => { // eslint-disable-line
   req.session.destroy();
   res.redirect('/');
 });
