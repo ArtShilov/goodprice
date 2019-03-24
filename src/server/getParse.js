@@ -80,7 +80,7 @@ const getFromParser = async () => {
           shop.save();
         } else if ((testShop.price !== shopItem.price)
         || (testShop.presence !== shopItem.in_stock)) {
-          Product.findOneAndUpdate({ _id: testShop._id }, { price:shopItem.price, presence:shopItem.in_stock  }); // eslint-disable-line
+         await Product.findOneAndUpdate({ _id: testShop._id }, { price:shopItem.price, presence:shopItem.in_stock  }); // eslint-disable-line
         }
       }
     }
@@ -88,9 +88,6 @@ const getFromParser = async () => {
     console.error(e);
   }
 };
-
-
-getFromParser();
 
 
 const setLowerPrice = async () => {
@@ -109,5 +106,9 @@ const setLowerPrice = async () => {
   }
 };
 
+const seed = async () => {
+  await getFromParser();
+  setLowerPrice();
+};
 
-setLowerPrice();
+seed();
