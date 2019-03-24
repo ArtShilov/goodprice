@@ -1,9 +1,22 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import CardProduct from '../card-product/card-product';
 import SubFilter from '../sub-filter/sub-filter';
 import './home-page.css';
+import { productsToReduxAC } from '../../redux/actions/home-page-actions';
+import { selectProducts } from '../../redux/selectors/home-page-selectors';
 
-export default class HomePage extends Component {
+const mapStateToProps = state => ({
+  productsFromRedux: selectProducts(state)
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  productsToRedux: productsToReduxAC
+}, dispatch);
+
+
+class HomePage extends Component {
   state = {
     products: []
   }
@@ -12,10 +25,11 @@ export default class HomePage extends Component {
     this.getProducts();
   }
 
+
   viewCards = () => {
     const { products } = this.state;
     return products.map(item => (
-      <CardProduct key={item._id} img={item.img} name={item.name} price={item.lowPrice} /> // eslint-disable-line
+      <CardProduct key={item._id} id={item._id} img={item.img} name={item.name} price={item.lowPrice} /> // eslint-disable-line
     ));
   }
 
@@ -32,8 +46,8 @@ export default class HomePage extends Component {
     try {
       const products = await fetch('api/products');
       const productsArray = await products.json();
-
       this.setState({ products: productsArray });
+      this.props.productsToRedux(productsArray);
     } catch (e) {
       console.error(e);
     }
@@ -115,3 +129,11 @@ export default class HomePage extends Component {
     );
   }
 }
+
+
+const HomePageApp = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HomePage);
+
+export default HomePageApp;

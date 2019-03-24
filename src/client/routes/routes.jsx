@@ -8,9 +8,11 @@ import InfoPage from '../components/info-page/info-page';
 import Page404 from '../components/page404/page404';
 import Login from '../components/login';
 import CardProduct from '../components/card-product/card-product';
+import BigProduct from '../components/big-product/big-product';
+
 
 const WrappedApp = (Component, props) => (
-  <App appName='Fancy React Redux App'>
+  <App appName='GoodPrice'>
     <Component { ...props } />
   </App>
 );
@@ -22,8 +24,12 @@ export default () => (
       render={ props => WrappedApp(CardProduct, props) }
     />
     <Route
-      exact path={ PAGES.home.path }
+    exact path={ PAGES.home.path }
       render={ props => WrappedApp(HomePage, props) }
+    />
+    <Route
+       path={ PAGES.BigProduct.path }
+      render={ props => WrappedApp(BigProduct, props) }
     />
     <Route
       exact path={ PAGES.info.path }
