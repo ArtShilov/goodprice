@@ -56,73 +56,64 @@ app.use(_bodyParser2.default.urlencoded({ extended: false }));
 // parse application/json
 app.use(_bodyParser2.default.json());
 
-// mongoose.connect(
-//   process.env.database,
-//   {
-//     useNewUrlParser: true,
-//     useFindAndModify: false,
-//     useCreateIndex: true
-//   }
-// );
+mongoose.connect(process.env.database, {
+  useNewUrlParser: true,
+  useFindAndModify: false,
+  useCreateIndex: true
+});
 
-// // CONNECTION EVENTS
-// // When successfully connected
-// mongoose.connection.on('connected', () => {
-//   console.log('Mongoose default connection open ');
-// });
+// CONNECTION EVENTS
+// When successfully connected
+mongoose.connection.on('connected', () => {
+  console.log('Mongoose default connection open ');
+});
 
-// // If the connection throws an error
-// mongoose.connection.on('error', (err) => {
-//   console.log(`Mongoose default connection error: ${err}`);
-// });
+// If the connection throws an error
+mongoose.connection.on('error', err => {
+  console.log(`Mongoose default connection error: ${err}`);
+});
 
-// // When the connection is disconnected
-// mongoose.connection.on('disconnected', () => {
-//   console.log('Mongoose default connection disconnected');
-// });
+// When the connection is disconnected
+mongoose.connection.on('disconnected', () => {
+  console.log('Mongoose default connection disconnected');
+});
 
+require('./authentication').init(app);
 
-// require('./authentication').init(app);
+// seed();
 
+app.use(session({
+  store: new MongoStore({
+    mongooseConnection: mongoose.connection,
+    collection: 'session',
+    autoRemove: 'interval',
+    autoRemoveInterval: 120
+  }),
+  key: 'user_sid',
+  secret: 'anything here',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    expires: 6000000
+  }
+}));
 
-// // seed();
+app.use(passport.initialize());
+app.use(passport.session());
 
-// app.use(session({
-//   store: new MongoStore({
-//     mongooseConnection: mongoose.connection,
-//     collection: 'session',
-//     autoRemove: 'interval',
-//     autoRemoveInterval: 120
-//   }),
-//   key: 'user_sid',
-//   secret: 'anything here',
-//   resave: false,
-//   saveUninitialized: false,
-//   cookie: {
-//     expires: 6000000
-//   }
-// }));
+app.engine('.hbs', exphbs({
+  defaultLayout: 'layout',
+  extname: '.hbs',
+  layoutsDir: _path2.default.join(__dirname, 'views'),
+  partialsDir: _path2.default.join(__dirname)
+}));
 
-
-// app.use(passport.initialize());
-// app.use(passport.session());
-
-
-// app.engine('.hbs', exphbs({
-//   defaultLayout: 'layout',
-//   extname: '.hbs',
-//   layoutsDir: path.join(__dirname, 'views'),
-//   partialsDir: path.join(__dirname)
-// }));
-
-
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'hbs');
-
+app.set('views', _path2.default.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
 
 const { buildConfig: { assetsDir, targetDir }, server: { port }, proxyAssets } = _default2.default;
 
-// app.use('/api2', proxy({ target: 'https://api.priceva.com/api/v1/product/list', changeOrigin: true }));
+app.use('/api2', (0, _httpProxyMiddleware2.default)({ target: 'https://api.priceva.com/api/v1/product/list', changeOrigin: true }));
 
 if (_default2.default.appModeDev) {
   app.use(`/${assetsDir}`, (0, _httpProxyMiddleware2.default)({ target: `http://${proxyAssets.host}:${proxyAssets.port}`, changeOrigin: true }));
@@ -130,24 +121,19 @@ if (_default2.default.appModeDev) {
   app.use(`/${assetsDir}`, _express2.default.static(_path2.default.join(process.cwd(), targetDir, 'client')));
 }
 
-// app.use(expressWinston.logger({
-//   transports: [
-//     new winston.transports.Console()
-//   ],
-//   format: winston.format.combine(
-//     winston.format.json()
-//   ),
-//   meta: true,
-//   msg: 'HTTP {{res.statusCode}} {{req.method}} {{req.url}}',
-//   expressFormat: true,
-//   colorize: false
-// }));
+app.use(expressWinston.logger({
+  transports: [new winston.transports.Console()],
+  format: winston.format.combine(winston.format.json()),
+  meta: true,
+  msg: 'HTTP {{res.statusCode}} {{req.method}} {{req.url}}',
+  expressFormat: true,
+  colorize: false
+}));
 
 app.use('/api', _router2.default);
 app.use('/user', _user2.default);
 
 app.use('*', (req, res) => {
-  console.log('hbs');
   const template = _handlebars2.default.compile(_fs2.default.readFileSync(_path2.default.join(__dirname, 'index.hbs'), 'utf8'));
   const context = {
     title: 'GoodPrice'
