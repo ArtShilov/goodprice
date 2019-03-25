@@ -27,56 +27,56 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
-mongoose.connect(
-  process.env.database,
-  {
-    useNewUrlParser: true,
-    useFindAndModify: false,
-    useCreateIndex: true
-  }
-);
+// mongoose.connect(
+//   process.env.database,
+//   {
+//     useNewUrlParser: true,
+//     useFindAndModify: false,
+//     useCreateIndex: true
+//   }
+// );
 
-// CONNECTION EVENTS
-// When successfully connected
-mongoose.connection.on('connected', () => {
-  console.log('Mongoose default connection open ');
-});
+// // CONNECTION EVENTS
+// // When successfully connected
+// mongoose.connection.on('connected', () => {
+//   console.log('Mongoose default connection open ');
+// });
 
-// If the connection throws an error
-mongoose.connection.on('error', (err) => {
-  console.log(`Mongoose default connection error: ${err}`);
-});
+// // If the connection throws an error
+// mongoose.connection.on('error', (err) => {
+//   console.log(`Mongoose default connection error: ${err}`);
+// });
 
-// When the connection is disconnected
-mongoose.connection.on('disconnected', () => {
-  console.log('Mongoose default connection disconnected');
-});
-
-
-require('./authentication').init(app);
+// // When the connection is disconnected
+// mongoose.connection.on('disconnected', () => {
+//   console.log('Mongoose default connection disconnected');
+// });
 
 
-// seed();
-
-app.use(session({
-  store: new MongoStore({
-    mongooseConnection: mongoose.connection,
-    collection: 'session',
-    autoRemove: 'interval',
-    autoRemoveInterval: 120
-  }),
-  key: 'user_sid',
-  secret: 'anything here',
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    expires: 6000000
-  }
-}));
+// require('./authentication').init(app);
 
 
-app.use(passport.initialize());
-app.use(passport.session());
+// // seed();
+
+// app.use(session({
+//   store: new MongoStore({
+//     mongooseConnection: mongoose.connection,
+//     collection: 'session',
+//     autoRemove: 'interval',
+//     autoRemoveInterval: 120
+//   }),
+//   key: 'user_sid',
+//   secret: 'anything here',
+//   resave: false,
+//   saveUninitialized: false,
+//   cookie: {
+//     expires: 6000000
+//   }
+// }));
+
+
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 
 // app.engine('.hbs', exphbs({
@@ -93,7 +93,7 @@ app.use(passport.session());
 
 const { buildConfig: { assetsDir, targetDir }, server: { port }, proxyAssets } = config;
 
-app.use('/api2', proxy({ target: 'https://api.priceva.com/api/v1/product/list', changeOrigin: true }));
+// app.use('/api2', proxy({ target: 'https://api.priceva.com/api/v1/product/list', changeOrigin: true }));
 
 if (config.appModeDev) {
   app.use(
@@ -107,24 +107,24 @@ if (config.appModeDev) {
   );
 }
 
-app.use(expressWinston.logger({
-  transports: [
-    new winston.transports.Console()
-  ],
-  format: winston.format.combine(
-    winston.format.json()
-  ),
-  meta: true,
-  msg: 'HTTP {{res.statusCode}} {{req.method}} {{req.url}}',
-  expressFormat: true,
-  colorize: false
-}));
+// app.use(expressWinston.logger({
+//   transports: [
+//     new winston.transports.Console()
+//   ],
+//   format: winston.format.combine(
+//     winston.format.json()
+//   ),
+//   meta: true,
+//   msg: 'HTTP {{res.statusCode}} {{req.method}} {{req.url}}',
+//   expressFormat: true,
+//   colorize: false
+// }));
 
 app.use('/api', router);
 app.use('/user', user);
 
 app.use('*', (req, res) => {
-  console.log('hbs')
+  console.log('hbs');
   const template = handlebars.compile(fs.readFileSync(
     path.join(__dirname, 'index.hbs'),
     'utf8',
