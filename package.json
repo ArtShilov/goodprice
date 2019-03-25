@@ -23,7 +23,8 @@
     "start-build": "NODE_ENV=localhost APP_MOCKS=0 node ./.build/server/app",
     "start-server": "SERVICE_HOST=0.0.0.0:3001 NODE_ENV=localhost APP_MOCKS=0 APP_MODE_DEV=1 nodemon --exec babel-node src/server/app",
     "start-client": "webpack-dev-server --mode development",
-    "start": "node start.js"
+    "start": "node start.js",
+    "postinstall": "webpack -p"
   },
   "dependencies": {
     "bcrypt": "^3.0.5",
