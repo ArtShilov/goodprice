@@ -19,12 +19,12 @@ const config = {
 
   proxyAssets: {
     host: 'localhost',
-    port: 9090
+    port: process.env.PORT_PROXY || 9090
   },
 
   server: {
     host,
-    port: 3000
+    port: process.env.PORT_SERVER || 3000
   }
 };
 
