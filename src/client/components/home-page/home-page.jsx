@@ -25,7 +25,6 @@ class HomePage extends Component {
     this.getProducts();
   }
 
-
   viewCards = () => {
     const { products } = this.state;
     return products.map(item => (
