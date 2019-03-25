@@ -136,6 +136,7 @@ app.use('/api', _router2.default);
 app.use('/user', _user2.default);
 
 app.use('*', (req, res) => {
+  console.log('hbs');
   const template = _handlebars2.default.compile(_fs2.default.readFileSync(_path2.default.join(__dirname, 'index.hbs'), 'utf8'));
   const context = {
     title: 'GoodPrice'
