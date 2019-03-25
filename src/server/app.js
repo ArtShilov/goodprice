@@ -28,9 +28,9 @@ app.use(bodyParser.json());
 
 
 const db = mongoose.connect( // eslint-disable-line
-  'mongodb+srv://elbrus:Qwerty123@cluster0-dqtpq.mongodb.net/test?retryWrites=true',
+  // 'mongodb+srv://elbrus:Qwerty123@cluster0-dqtpq.mongodb.net/test?retryWrites=true',
 
-  // secret.database,
+  secret.database,
   {
     useNewUrlParser: true,
     useFindAndModify: false,

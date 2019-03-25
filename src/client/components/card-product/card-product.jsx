@@ -72,7 +72,6 @@ export default class CardProductPage extends Component {
           <div className="xf-product__cost xf-product-cost">
             <div className="xf-price xf-product-cost__current js-product__cost " data-cost="37.9" data-type="шт">
               <span className="xf-price__rouble">{this.props.price}</span>
-              <span className="xf-price__penny">,90 &nbsp;</span>
               <span className="xf-price__unit">
                 р/шт
           </span>

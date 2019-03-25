@@ -110,9 +110,13 @@ body{
   padding-top: 20px;
 }
 
+.xf-price{
+  width: 100px;
+}
+
 .xf-price__rouble{
   margin: 0;
-  font-size: 30px;
+  font-size: 20px;
 }
 
 .xf-add-to-cart-btn {
