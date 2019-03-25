@@ -24,8 +24,9 @@ const config = {
 
   server: {
     host,
-    port: process.env.PORT_SERVER || 3000
+    port: process.env.PORT || 3000
   }
 };
+
 
 export default config;
