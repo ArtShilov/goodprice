@@ -1,5 +1,3 @@
-import secret from '../config/secret';
-
 const passport = require('passport');
 const bcrypt = require('bcrypt');
 const LocalStrategy = require('passport-local').Strategy;
@@ -54,8 +52,8 @@ function initPassport() {
   ));
 
   passport.use(new FacebookStrategy({
-    clientID: process.env.secret.facebook_api_id,
-    clientSecret: process.env.secret.facebook_api_secret,
+    clientID: process.env.facebook_api_id,
+    clientSecret: process.env.facebook_api_secret,
     callbackURL: '/user/auth/facebook/callback'
   },
   (async (accessToken, refreshToken, profile, done) => {
