@@ -62,6 +62,8 @@ export const seed = async () => {
         await product.save(); // eslint-disable-line
         }
         const savedProduct = await Product.findOne({ name: item.name }); // eslint-disable-line
+        console.log(`savedProduct${savedProduct}`);
+        console.log(savedProduct);
       for (const shopItem of item.sources) { // eslint-disable-line
         // console.log(shopItem);
         const testShop = await Shops.findOne({ // eslint-disable-line
@@ -107,10 +109,13 @@ export const seed = async () => {
     }
   };
 
-
-  await getFromParser();
-  setLowerPrice();
-  console.log('finished');
+  try {
+    await getFromParser();
+    setLowerPrice();
+    console.log('finished');
+  } catch (e) {
+    console.error(e);
+  }
 };
 
 // seed();
