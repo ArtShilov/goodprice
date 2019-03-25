@@ -1,3 +1,8 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 const appId = 'GoodPrice';
 const appModeDev = process.env.APP_MODE_DEV === '1';
 const env = process.env.NODE_ENV || 'localhost';
@@ -28,4 +33,4 @@ const config = {
   }
 };
 
-export default config;
+exports.default = config;
