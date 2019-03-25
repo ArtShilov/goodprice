@@ -124,6 +124,7 @@ app.use('/api', router);
 app.use('/user', user);
 
 app.use('*', (req, res) => {
+  console.log('hbs')
   const template = handlebars.compile(fs.readFileSync(
     path.join(__dirname, 'index.hbs'),
     'utf8',
