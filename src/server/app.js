@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
-const db = mongoose.connect( // eslint-disable-line
+mongoose.connect(
   process.env.database,
   {
     useNewUrlParser: true,
@@ -35,6 +35,23 @@ const db = mongoose.connect( // eslint-disable-line
     useCreateIndex: true
   }
 );
+
+// CONNECTION EVENTS
+// When successfully connected
+mongoose.connection.on('connected', () => {
+  console.log('Mongoose default connection open ');
+});
+
+// If the connection throws an error
+mongoose.connection.on('error', (err) => {
+  console.log(`Mongoose default connection error: ${err}`);
+});
+
+// When the connection is disconnected
+mongoose.connection.on('disconnected', () => {
+  console.log('Mongoose default connection disconnected');
+});
+
 
 require('./authentication').init(app);
 
