@@ -3,6 +3,10 @@ export const PAGES = {
     name: 'home',
     path: '/home'
   },
+  BigProduct: {
+    name: 'BigProduct',
+    path: '/home/:id'
+  },
   card: {
     name: 'card',
     path: '/'
