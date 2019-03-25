@@ -33,13 +33,13 @@ class HomePage extends Component {
   }
 
   viewSubFilter = () => {
+    const shops = ['Перекресток', 'Утконос', 'Инстмарт', 'Ашан', 'Пятерочка', 'Магнит', 'Метро', 'Лента'];
     const subFilters = [];
-    for (let i = 0; i < 6; i += 1) {
-      subFilters.push(<SubFilter key={i}></SubFilter>);
+    for (let i = 0; i < shops.length; i += 1) {
+      subFilters.push(<SubFilter name={shops[i]} key={shops[i]}></SubFilter>);
     }
     return subFilters;
   }
-
 
   getProducts = async () => {
     try {

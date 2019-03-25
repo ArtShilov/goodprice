@@ -14,7 +14,7 @@ export default class SubFilter extends Component {
               </path>
             </svg>
           </div>
-          <span className="xf-catalog-market__text">Перекресток</span>
+          <span className="xf-catalog-market__text">{this.props.name}</span>
         </a>
       </li>
     );
