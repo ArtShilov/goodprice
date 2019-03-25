@@ -4,13 +4,15 @@ import appReducer from './app-reducer';
 import userReducer from './user-reducer';
 import postReducer from './post-reducer';
 import loginReducer from './login-reducer';
+import homeReducer from './home-page-reducer';
 
 const reducers = history => combineReducers({
   router: connectRouter(history),
   app: appReducer,
   user: userReducer,
   post: postReducer,
-  login: loginReducer
+  login: loginReducer,
+  products: homeReducer
 });
 
 export default reducers;
