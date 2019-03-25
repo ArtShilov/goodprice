@@ -79,16 +79,16 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-app.engine('.hbs', exphbs({
-  defaultLayout: 'layout',
-  extname: '.hbs',
-  layoutsDir: path.join(__dirname, 'views'),
-  partialsDir: path.join(__dirname)
-}));
+// app.engine('.hbs', exphbs({
+//   defaultLayout: 'layout',
+//   extname: '.hbs',
+//   layoutsDir: path.join(__dirname, 'views'),
+//   partialsDir: path.join(__dirname)
+// }));
 
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'hbs');
 
 
 const { buildConfig: { assetsDir, targetDir }, server: { port }, proxyAssets } = config;
