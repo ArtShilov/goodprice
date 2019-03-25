@@ -118,7 +118,6 @@ app.use('/api2', (0, _httpProxyMiddleware2.default)({ target: 'https://api.price
 if (_default2.default.appModeDev) {
   app.use(`/${assetsDir}`, (0, _httpProxyMiddleware2.default)({ target: `http://${proxyAssets.host}:${proxyAssets.port}`, changeOrigin: true }));
 } else {
-  console.log(_default2.default.appModeDev);
   app.use(`/${assetsDir}`, _express2.default.static(_path2.default.join(process.cwd(), targetDir, 'client')));
 }
 
