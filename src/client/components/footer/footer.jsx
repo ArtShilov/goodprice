@@ -5,19 +5,19 @@ import logo from './logo.png';
 export default class Footer extends Component {
   render() {
     return (
-      <footer class="xf-footer">
-        <div class="xf-wrapper">
-          <div class="xf-footer__row">
-            <div class="xf-footer__logo">
-              <div class="xf-footer-logo">
-                <i class="fas fa-cannabis"></i>
-                <img class="xf-footer-logo__image" src={logo} alt="X5 Retail Group" />
+      <footer className="xf-footer">
+        <div className="xf-wrapper">
+          <div className="xf-footer__row">
+            <div className="xf-footer__logo">
+              <div className="xf-footer-logo">
+                <i className="fas fa-cannabis"></i>
+                <img className="xf-footer-logo__image" src={logo} alt="X5 Retail Group" />
               </div>
             </div>
-            <div class="xf-footer__social">
-              <ul class="xf-footer-social">
-                <li class="xf-footer-social__item _fb">
-                  <a class="xf-footer-social__link" href="https://www.facebook.com/perekrestok" title="Facebook">
+            <div className="xf-footer__social">
+              <ul className="xf-footer-social">
+                <li className="xf-footer-social__item _fb">
+                  <a className="xf-footer-social__link" href="https://www.facebook.com/perekrestok" title="Facebook">
                     <svg id="xf-svg__facebook" viewBox="0 0 32 32" width="100%" height="100%">
                       <title>facebook</title>
                       <path
@@ -26,8 +26,8 @@ export default class Footer extends Component {
                     </svg>
                   </a>
                 </li>
-                <li class="xf-footer-social__item _vk">
-                  <a class="xf-footer-social__link" href="https://vk.com/perekrestok_shop" title="ВКонтакте">
+                <li className="xf-footer-social__item _vk">
+                  <a className="xf-footer-social__link" href="https://vk.com/perekrestok_shop" title="ВКонтакте">
                     <svg id="xf-svg__vk" viewBox="0 0 32 32" width="100%" height="100%">
                       <title>vk</title>
                       <path
@@ -36,8 +36,8 @@ export default class Footer extends Component {
                     </svg>
                   </a>
                 </li>
-                <li class="xf-footer-social__item _tw">
-                  <a class="xf-footer-social__link" href="https://twitter.com/perekrestok" title="Twitter">
+                <li className="xf-footer-social__item _tw">
+                  <a className="xf-footer-social__link" href="https://twitter.com/perekrestok" title="Twitter">
                     <svg id="xf-svg__twitter" viewBox="0 0 32 32" width="100%" height="100%">
                       <title>twitter</title>
                       <path
@@ -46,8 +46,8 @@ export default class Footer extends Component {
                     </svg>
                   </a>
                 </li>
-                <li class="xf-footer-social__item _youtube">
-                  <a class="xf-footer-social__link" href="https://www.youtube.com/channel/UCY9Nwfy_8drHqif0iryQ7Vw"
+                <li className="xf-footer-social__item _youtube">
+                  <a className="xf-footer-social__link" href="https://www.youtube.com/channel/UCY9Nwfy_8drHqif0iryQ7Vw"
                     title="Youtube">
                     <svg id="xf-svg__youtube" viewBox="0 0 32 32" width="100%" height="100%">
                       <title>youtube</title>
@@ -57,8 +57,8 @@ export default class Footer extends Component {
                     </svg>
                   </a>
                 </li>
-                <li class="xf-footer-social__item _ok">
-                  <a class="xf-footer-social__link" href="https://ok.ru/perekrestok.shop" title="Одноклассники">
+                <li className="xf-footer-social__item _ok">
+                  <a className="xf-footer-social__link" href="https://ok.ru/perekrestok.shop" title="Одноклассники">
                     <svg id="xf-svg__ok" viewBox="0 0 32 32" width="100%" height="100%">
                       <title>ok</title>
                       <path
@@ -70,8 +70,8 @@ export default class Footer extends Component {
                     </svg>
                   </a>
                 </li>
-                <li class="xf-footer-social__item _ig">
-                  <a class="xf-footer-social__link" href="http://instagram.com/perekrestok" title="Instagram">
+                <li className="xf-footer-social__item _ig">
+                  <a className="xf-footer-social__link" href="http://instagram.com/perekrestok" title="Instagram">
                     <svg id="xf-svg__ig" viewBox="0 0 32 32" width="100%" height="100%">
                       <title>ig</title>
                       <path
@@ -82,28 +82,28 @@ export default class Footer extends Component {
                 </li>
               </ul>
             </div>
-            <div class="xf-footer__payment">
-              <ul class="xf-footer-payment">
-                <li class="xf-footer-payment__item _mc">
-                  <div class="xf-footer-payment__image-mc" aria-label="MasterCard" role="link">
+            <div className="xf-footer__payment">
+              <ul className="xf-footer-payment">
+                <li className="xf-footer-payment__item _mc">
+                  <div className="xf-footer-payment__image-mc" aria-label="MasterCard" role="link">
                     <img src="https://www.perekrestok.ru/build/img/svg/mc.svg" alt="mc" />
                   </div>
                 </li>
-                <li class="xf-footer-payment__item _visa">
-                  <div class="xf-footer-payment__image" aria-label="Visa" role="link">
+                <li className="xf-footer-payment__item _visa">
+                  <div className="xf-footer-payment__image" aria-label="Visa" role="link">
                     <img src="https://www.perekrestok.ru/build/img/svg/visa.svg" alt="visa" />
                   </div>
                 </li>
-                <li class="xf-footer-payment__item _mir">
-                  <div class="xf-footer-payment__image" aria-label="Мир" role="link">
+                <li className="xf-footer-payment__item _mir">
+                  <div className="xf-footer-payment__image" aria-label="Мир" role="link">
                     <img src="https://www.perekrestok.ru/build/img/svg/mir.svg" alt="mir" />
                   </div>
                 </li>
               </ul>
             </div>
           </div>
-          <div class="xf-footer__row">
-            <p class="xf-footer__copyright">© 1999 – 2019 Goodprice</p>
+          <div className="xf-footer__row">
+            <p className="xf-footer__copyright">© 1999 – 2019 Goodprice</p>
           </div>
         </div>
       </footer>

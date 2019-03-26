@@ -115,14 +115,14 @@ a {
   margin-right: 5px;
   stroke: #B2D136;
   fill: #B2D136;
-  stroke-width: 4;
+  stroke-width: 2;
 }
 
 .xf-header-repeat__button:hover #xf-svg__repeat {
   margin-right: 5px;
   stroke: #018B44;
   fill: #018B44;
-  stroke-width: 4;
+  stroke-width: 2;
 }
 
 .xf-cart-info__item {
