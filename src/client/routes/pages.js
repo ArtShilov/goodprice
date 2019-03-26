@@ -8,7 +8,7 @@ export const PAGES = {
     path: '/home/:id'
   },
   card: {
-    name: 'card',
+    name: 'home',
     path: '/'
   },
   info: {

@@ -21,7 +21,7 @@ export default () => (
   <Switch>
     <Route
       exact path={ PAGES.card.path }
-      render={ props => WrappedApp(CardProduct, props) }
+      render={ props => WrappedApp(HomePage, props) }
     />
     <Route
     exact path={ PAGES.home.path }

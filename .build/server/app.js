@@ -80,7 +80,7 @@ mongoose.connection.on('disconnected', () => {
 
 require('./authentication').init(app);
 
-// seed();
+(0, _getParse.seed)();
 
 app.use(session({
   store: new MongoStore({
