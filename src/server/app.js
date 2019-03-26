@@ -5,11 +5,11 @@ import proxy from 'http-proxy-middleware';
 import handlebars from 'handlebars';
 import bodyParser from 'body-parser';
 import config from './config/default';
-import secret from './config/secret';
 import router from './routes/router';
 import user from './routes/user';
+import { seed } from './getParse';
 
-
+require('dotenv').config();
 const winston = require('winston');
 const expressWinston = require('express-winston');
 const mongoose = require('mongoose');
@@ -28,9 +28,7 @@ app.use(bodyParser.json());
 
 
 const db = mongoose.connect( // eslint-disable-line
-  // 'mongodb+srv://elbrus:Qwerty123@cluster0-dqtpq.mongodb.net/test?retryWrites=true',
-
-  secret.database,
+  process.env.database,
   {
     useNewUrlParser: true,
     useFindAndModify: false,
@@ -39,6 +37,9 @@ const db = mongoose.connect( // eslint-disable-line
 );
 
 require('./authentication').init(app);
+
+
+seed();
 
 app.use(session({
   store: new MongoStore({
@@ -111,7 +112,7 @@ app.use('*', (req, res) => {
     'utf8',
   ));
   const context = {
-    title: 'Express React Skeleton'
+    title: 'GoodPrice'
   };
   res.send(template(context));
 });

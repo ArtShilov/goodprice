@@ -18,25 +18,49 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 
 class HomePage extends Component {
   state = {
-    products: []
+    products: [],
+    shops: [],
+    showProducts: []
   }
 
   componentDidMount() {
+    this.getShops();
     this.getProducts();
   }
 
   viewCards = () => {
-    const { products } = this.state;
-    return products.map(item => (
+    const { showProducts } = this.state;
+    return showProducts.map(item => (
       <CardProduct key={item._id} id={item._id} img={item.img} name={item.name} price={item.lowPrice} /> // eslint-disable-line
     ));
   }
 
+  handleClickFilter = (shopsName) => {
+    const { shops } = this.state;
+    if (shopsName === 'allProducts') {
+      this.setState({ showProducts: this.state.products });
+    } else {
+      const productsShop = shops.filter((item) => {
+        if (item.name === shopsName) { return item; }
+      });
+
+      const products = this.state.products.filter((product) => {
+        for (let i = 0; i < productsShop.length; i++) {
+          if (product._id === productsShop[i].product_id) { return product; }
+        }
+      });
+
+      this.setState({ showProducts: products });
+    }
+  }
+
   viewSubFilter = () => {
-    const shops = ['Перекресток', 'Утконос', 'Инстмарт', 'Ашан', 'Пятерочка', 'Магнит', 'Метро', 'Лента'];
+    const shops = ['Перекресток', 'Утконос', 'Инстмарт', 'Все продукты', 'Пятерочка', 'Магнит', 'Метро', 'Лента'];
+    const shopsName = ['perekrestok.ru', 'utkonos.ru', 'instamart.ru', 'allProducts', 'allProducts', 'allProducts', 'allProducts', 'allProducts'];
     const subFilters = [];
+
     for (let i = 0; i < shops.length; i += 1) {
-      subFilters.push(<SubFilter name={shops[i]} key={shops[i]}></SubFilter>);
+      subFilters.push(<SubFilter onClick={s => this.handleClickFilter(s)} shopsName={shopsName[i]} title={shops[i]} key={shops[i]}></SubFilter>);
     }
     return subFilters;
   }
@@ -45,8 +69,21 @@ class HomePage extends Component {
     try {
       const products = await fetch('api/products');
       const productsArray = await products.json();
+
       this.setState({ products: productsArray });
+      this.setState({ showProducts: productsArray });
       this.props.productsToRedux(productsArray);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  getShops = async () => {
+    try {
+      const shops = await fetch('api/products/shop');
+      const shopsArray = await shops.json();
+
+      this.setState({ shops: shopsArray });
     } catch (e) {
       console.error(e);
     }

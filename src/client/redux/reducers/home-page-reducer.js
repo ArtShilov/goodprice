@@ -1,6 +1,7 @@
 import { APP_TYPES } from '../actions/home-page-actions';
 
 const appReducerInitState = {
+  products: []
 };
 
 export default function appReducer(state = appReducerInitState, action) {
