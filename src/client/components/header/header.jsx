@@ -86,7 +86,7 @@ export default class Header extends Component {
                   <span className="xf-cart-info__cost js-popup-cart__cost">
                     <div className="xf-price">
                       <span className="xf-price__roubles js-roubles" data-price="258">
-                        258
+                        {this.props.price}
                   </span>
                       <span className="xf-price__penny">
                         <span className="xf-rouble-symbol">р</span>
