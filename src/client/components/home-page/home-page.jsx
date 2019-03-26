@@ -20,7 +20,8 @@ class HomePage extends Component {
   state = {
     products: [],
     shops: [],
-    showProducts: []
+    showProducts: [],
+    cart: []
   }
 
   componentDidMount() {
@@ -28,10 +29,23 @@ class HomePage extends Component {
     this.getProducts();
   }
 
+  handleClickCardBtn = (articul) => {
+    console.log('TCL: HomePage -> handleClickCardBtn -> articul', articul);
+    const cart = [];
+    this.state.products.forEach((item) => {
+      if (item._id === articul) {
+        cart.push(item);
+      }
+    });
+    this.setState({ cart });
+    localStorage.setItem('cart', JSON.stringify(cart));
+    console.log(this.state.cart);
+  }
+
   viewCards = () => {
     const { showProducts } = this.state;
     return showProducts.map(item => (
-      <CardProduct key={item._id} id={item._id} img={item.img} name={item.name} price={item.lowPrice} /> // eslint-disable-line
+      <CardProduct onClick={(a) => this.handleClickCardBtn(a)} key={item._id} id={item._id} img={item.img} name={item.name} price={item.lowPrice} /> // eslint-disable-line
     ));
   }
 

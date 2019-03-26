@@ -38,7 +38,6 @@ const db = mongoose.connect( // eslint-disable-line
 
 require('./authentication').init(app);
 
-
 seed();
 
 app.use(session({
