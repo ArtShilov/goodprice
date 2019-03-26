@@ -55,7 +55,7 @@ function initPassport() {
   passport.use(new FacebookStrategy({
     clientID: process.env.facebook_api_id,
     clientSecret: process.env.facebook_api_secret,
-    callbackURL: '/user/auth/facebook/callback'
+    callbackURL: process.env.facebook_callback
   }, async (accessToken, refreshToken, profile, done) => {
     const user = await Users.findOne({ facebook: profile.id });
     if (!user) {
