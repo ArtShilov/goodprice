@@ -1,13 +1,16 @@
 import { APP_TYPES } from '../actions/home-page-actions';
 
 const appReducerInitState = {
-  products: []
+  products: [],
+  cart: []
 };
 
 export default function appReducer(state = appReducerInitState, action) {
   switch (action.type) {
     case APP_TYPES.Products_To_Redux:
       return { ...state, products: action.products };
+    case APP_TYPES.CART_TO_REDUX:
+      return { ...state, cart: action.cart };
     default:
       return state;
   }
