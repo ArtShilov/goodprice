@@ -21,6 +21,13 @@ function renderProfile(req, res) {
   });
 }
 
+function renderPrivacy(req, res) {
+  res.render('privacyPolicy', {
+  });
+}
+
+
+router.get('/privacy', renderPrivacy);
 
 router.get('/login', renderWelcome);
 router.get('/profile', authenticationMiddleware(), renderProfile);
