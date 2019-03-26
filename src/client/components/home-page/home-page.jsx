@@ -4,14 +4,16 @@ import { bindActionCreators } from 'redux';
 import CardProduct from '../card-product/card-product';
 import SubFilter from '../sub-filter/sub-filter';
 import './home-page.css';
-import { productsToReduxAC } from '../../redux/actions/home-page-actions';
-import { selectProducts } from '../../redux/selectors/home-page-selectors';
+import { productsToReduxAC, cartToReduxAC } from '../../redux/actions/home-page-actions';
+import { selectProducts, selectCart } from '../../redux/selectors/home-page-selectors';
 
 const mapStateToProps = state => ({
+  cartFromRedux: selectCart(state),
   productsFromRedux: selectProducts(state)
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
+  cartToRedux: cartToReduxAC,
   productsToRedux: productsToReduxAC
 }, dispatch);
 
@@ -20,26 +22,25 @@ class HomePage extends Component {
   state = {
     products: [],
     shops: [],
-    showProducts: [],
-    cart: []
+    showProducts: []
   }
 
   componentDidMount() {
+    this.getCart();
     this.getShops();
     this.getProducts();
   }
 
   handleClickCardBtn = (articul) => {
-    console.log('TCL: HomePage -> handleClickCardBtn -> articul', articul);
-    const cart = [];
+    const cart = this.props.cartFromRedux;
+
     this.state.products.forEach((item) => {
       if (item._id === articul) {
         cart.push(item);
       }
     });
-    this.setState({ cart });
+    this.props.cartToRedux(cart);
     localStorage.setItem('cart', JSON.stringify(cart));
-    console.log(this.state.cart);
   }
 
   viewCards = () => {
@@ -77,6 +78,12 @@ class HomePage extends Component {
       subFilters.push(<SubFilter onClick={s => this.handleClickFilter(s)} shopsName={shopsName[i]} title={shops[i]} key={shops[i]}></SubFilter>);
     }
     return subFilters;
+  }
+
+  getCart = () => {
+    if (localStorage.getItem('cart') !== null) {
+      this.props.cartToRedux(JSON.parse(localStorage.getItem('cart')));
+    }
   }
 
   getProducts = async () => {
