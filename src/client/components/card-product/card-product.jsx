@@ -22,6 +22,12 @@ export default class CardProductPage extends Component {
   //   // this.props.history.push('/');
   // }
 
+  handleClickCardBtn = (e) => {
+    const articul = e.target.getAttribute('id');
+
+    this.props.onClick(articul);
+  }
+
   render() {
     return (
       <div className="js-catalog-product _additionals xf-catalog__item" data-id="314412">
@@ -78,7 +84,7 @@ export default class CardProductPage extends Component {
             </div>
           </div>
           <div className="xf-product__to-cart xf-product-to-cart product_calc">
-            <button className="xf-add-to-cart-btn js-product__add  ">
+            <button id={this.props.id} onClick={this.handleClickCardBtn} className="xf-add-to-cart-btn js-product__add  ">
               В корзину
           <i className="fas fa-shopping-basket"></i>
             </button>

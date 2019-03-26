@@ -16,6 +16,10 @@ body {
   margin-bottom: 20px;
 }
 
+button {
+  outline: none;
+}
+
 .container{
   margin: 0 auto;
   width: 965px;
