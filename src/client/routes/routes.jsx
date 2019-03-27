@@ -4,7 +4,7 @@ import { Redirect } from 'react-router';
 import { PAGES } from './pages';
 import App from '../components/app/app';
 import HomePage from '../components/home-page/home-page';
-import InfoPage from '../components/info-page/info-page';
+import CartPage from '../components/cart/cart';
 import Page404 from '../components/page404/page404';
 import Login from '../components/login';
 import CardProduct from '../components/card-product/card-product';
@@ -32,8 +32,8 @@ export default () => (
       render={ props => WrappedApp(BigProduct, props) }
     />
     <Route
-      exact path={ PAGES.info.path }
-      render={ props => WrappedApp(InfoPage, props) }
+      exact path={ PAGES.cart.path }
+      render={ props => WrappedApp(CartPage, props) }
     />
     <Route
       exact path={ PAGES.page404.path }

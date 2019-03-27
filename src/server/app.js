@@ -55,8 +55,7 @@ mongoose.connection.on('disconnected', () => {
 
 require('./authentication').init(app);
 
-
-seed();
+// seed();
 
 app.use(session({
   store: new MongoStore({

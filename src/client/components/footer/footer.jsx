@@ -10,7 +10,7 @@ export default class Footer extends Component {
           <div className="xf-footer__row">
             <div className="xf-footer__logo">
               <div className="xf-footer-logo">
-                <i className="fas fa-cannabis"></i>
+                <i className="fas fa-dove"></i>
                 <img className="xf-footer-logo__image" src={logo} alt="X5 Retail Group" />
               </div>
             </div>

@@ -10,3 +10,4 @@ package-lock.json
 .sass-cache
 src/server/config/secret.js
 .env
+# .build

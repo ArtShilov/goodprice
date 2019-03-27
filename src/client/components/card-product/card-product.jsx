@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './card-product.css';
-import { Route, Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
 // import { inputTextAC } from '../../redux/actions/head-actions';
@@ -21,6 +21,12 @@ export default class CardProductPage extends Component {
   //   <Redirect path='/'/>;
   //   // this.props.history.push('/');
   // }
+
+  handleClickCardBtn = (e) => {
+    const articul = e.target.getAttribute('id');
+
+    this.props.onClick(articul);
+  }
 
   render() {
     return (
@@ -78,7 +84,7 @@ export default class CardProductPage extends Component {
             </div>
           </div>
           <div className="xf-product__to-cart xf-product-to-cart product_calc">
-            <button className="xf-add-to-cart-btn js-product__add  ">
+            <button id={this.props.id} onClick={this.handleClickCardBtn} className="xf-add-to-cart-btn js-product__add  ">
               В корзину
           <i className="fas fa-shopping-basket"></i>
             </button>
