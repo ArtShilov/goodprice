@@ -87,7 +87,7 @@ a {
 
 .xf-cart-info__link {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 1fr;
 }
 
 .xf-price{
@@ -127,7 +127,7 @@ a {
 
 .xf-cart-info__item {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   position: relative;
 }
 
@@ -149,11 +149,11 @@ a {
   stroke-width: 0.1;
 }
 
-.xf-price__roubles {
+/* .xf-price__roubles {
   color: #000000;
   font-size: 26px;
   font-weight: bold;
-}
+} */
 
 .xf-header-favorites__count, .xf-cart-info__icon-count {
   display: block;
@@ -172,7 +172,7 @@ a {
 }
 
 .xf-cart-info__icon-count {
-  right: 105px;
+  right: 35px;
 }
 
 .xf-price__penny {

@@ -46,7 +46,6 @@ class Cart extends Component {
     return cart;
   }
 
-
   async componentDidMount() {
     const draftCart = JSON.parse(localStorage.getItem('cart'));
     const cart = this.makeCart(draftCart);
@@ -78,7 +77,6 @@ class Cart extends Component {
     this.setState({ cart });
     this.getAvailibleOptions(cart);
   }
-
 
   viewCart = () => {
     const { cart } = this.state;
@@ -164,7 +162,6 @@ class Cart extends Component {
       this.setState({ optionsArray });
     });
   }
-
 
   render() {
     return (

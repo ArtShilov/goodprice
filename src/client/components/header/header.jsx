@@ -128,16 +128,6 @@ class HeaderPage extends Component {
                       {this.props.cartFromRedux.length}
                     </span>
                   </span>
-                  <span className="xf-cart-info__cost js-popup-cart__cost">
-                    <div className="xf-price">
-                      <span className="xf-price__roubles js-roubles" data-price="258">
-                        202
-                  </span>
-                      <span className="xf-price__penny">
-                        <span className="xf-rouble-symbol">р</span>
-                      </span>
-                    </div>
-                  </span>
                   </Link>
               </div>
             </div>
