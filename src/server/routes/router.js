@@ -14,6 +14,7 @@ router.get('/products', async (req, res) => {
 router.get('/products/shop', async (req, res) => {
   const shops = await Shops.find();
   
+  
   res.status(200);
   res.send(shops);
 });

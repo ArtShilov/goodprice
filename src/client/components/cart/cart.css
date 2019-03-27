@@ -1,0 +1,11 @@
+.flex {
+  display:flex;
+  justify-content: space-around;
+}
+
+.shops {
+  width: 500px;
+  /* height: 300px; */
+  border:1px solid black;
+}
+

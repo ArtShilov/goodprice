@@ -23,7 +23,9 @@
     "start": "NODE_ENV=localhost APP_MODE_DEV=0 node ./.build/server/app",
     "start-server": "SERVICE_HOST=0.0.0.0:3001 NODE_ENV=localhost APP_MOCKS=0 APP_MODE_DEV=1 nodemon --exec babel-node src/server/app",
     "start-client": "webpack-dev-server --mode development",
-    "start-dev": "node start.js"
+    "start-dev": "node start.js",
+    "start-dev2": "npm run start-server && npm run start-client"
+
   },
   "dependencies": {
     "bcrypt": "^3.0.5",
