@@ -1,6 +1,7 @@
 //  ACTION TYPES
 export const APP_TYPES = {
   CART_TO_REDUX: 'CART_TO_REDUX',
+  SHOW_PRODUCTS: 'SHOW_PRODUCTS',
   Products_To_Redux: 'Products_To_Redux'
 };
 
@@ -13,4 +14,11 @@ export const productsToReduxAC = products => ({
 export const cartToReduxAC = item => ({
   type: APP_TYPES.CART_TO_REDUX,
   item
+});
+
+export const showProductsAC = products => ({
+  type: APP_TYPES.SHOW_PRODUCTS,
+  payload: {
+    showProducts: products
+  }
 });

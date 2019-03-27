@@ -4,25 +4,26 @@ import { bindActionCreators } from 'redux';
 import CardProduct from '../card-product/card-product';
 import SubFilter from '../sub-filter/sub-filter';
 import './home-page.css';
-import { productsToReduxAC, cartToReduxAC } from '../../redux/actions/home-page-actions';
-import { selectProducts, selectCart } from '../../redux/selectors/home-page-selectors';
+import { productsToReduxAC, cartToReduxAC, showProductsAC } from '../../redux/actions/home-page-actions';
+import { selectProducts, selectCart, selectShowProducts } from '../../redux/selectors/home-page-selectors';
+import { selectSearchText } from '../../redux/selectors/header-selector';
 
 const mapStateToProps = state => ({
   cartFromRedux: selectCart(state),
-  productsFromRedux: selectProducts(state)
+  productsFromRedux: selectProducts(state),
+  searchText: selectSearchText(state),
+  showProducts1: selectShowProducts(state)
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   cartToRedux: cartToReduxAC,
-  productsToRedux: productsToReduxAC
+  productsToRedux: productsToReduxAC,
+  showProducts: showProductsAC
 }, dispatch);
-
 
 class HomePage extends Component {
   state = {
-    products: [],
-    shops: [],
-    showProducts: []
+    shops: []
   }
 
   componentDidMount() {
@@ -33,15 +34,15 @@ class HomePage extends Component {
 
   handleClickCardBtn = (articul) => {
     const cart = this.props.cartFromRedux;
-    const item = this.state.products.find(item => item._id === articul);
+    const item = this.props.productsFromRedux.find(item => item._id === articul);
 
     this.props.cartToRedux(item);
     localStorage.setItem('cart', JSON.stringify(cart.concat(item)));
   }
 
   viewCards = () => {
-    const { showProducts } = this.state;
-    return showProducts.map(item => (
+    const { showProducts1 } = this.props;
+    return showProducts1.map(item => (
       <CardProduct onClick={(a) => this.handleClickCardBtn(a)} key={item._id} id={item._id} img={item.img} name={item.name} price={item.lowPrice} /> // eslint-disable-line
     ));
   }
@@ -49,19 +50,19 @@ class HomePage extends Component {
   handleClickFilter = (shopsName) => {
     const { shops } = this.state;
     if (shopsName === 'allProducts') {
-      this.setState({ showProducts: this.state.products });
+      this.props.showProducts(this.props.productsFromRedux);
     } else {
       const productsShop = shops.filter((item) => {
         if (item.name === shopsName) { return item; }
       });
 
-      const products = this.state.products.filter((product) => {
+      const products = this.props.productsFromRedux.filter((product) => {
         for (let i = 0; i < productsShop.length; i++) {
           if (product._id === productsShop[i].product_id) { return product; }
         }
       });
 
-      this.setState({ showProducts: products });
+      this.props.showProducts(products);
     }
   }
 
@@ -87,8 +88,7 @@ class HomePage extends Component {
       const products = await fetch('api/products');
       const productsArray = await products.json();
 
-      this.setState({ products: productsArray });
-      this.setState({ showProducts: productsArray });
+      this.props.showProducts(productsArray);
       this.props.productsToRedux(productsArray);
     } catch (e) {
       console.error(e);
