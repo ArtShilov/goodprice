@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './card-product.css';
-import { Route, Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
 // import { inputTextAC } from '../../redux/actions/head-actions';

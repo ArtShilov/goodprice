@@ -11,9 +11,9 @@ export const PAGES = {
     name: 'home',
     path: '/'
   },
-  info: {
-    name: 'info',
-    path: '/info'
+  cart: {
+    name: 'cart',
+    path: '/cart'
   },
   page404: {
     name: 'page404',
