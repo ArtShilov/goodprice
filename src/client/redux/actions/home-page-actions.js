@@ -10,7 +10,7 @@ export const productsToReduxAC = products => ({
   products
 });
 
-export const cartToReduxAC = cart => ({
+export const cartToReduxAC = item => ({
   type: APP_TYPES.CART_TO_REDUX,
-  cart
+  item
 });
