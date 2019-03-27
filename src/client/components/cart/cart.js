@@ -167,7 +167,7 @@ class Cart extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.saveCart()}>Сохранить корзину</button>
+        <button onClick={() => this.saveCart()}>Сохранить корзину</button>
       <div className='flex'>
       <div>{this.viewCart()} </div>
       <div className='shops'>Возможные варианты покупки:

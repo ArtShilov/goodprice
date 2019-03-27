@@ -33,14 +33,10 @@ class HomePage extends Component {
 
   handleClickCardBtn = (articul) => {
     const cart = this.props.cartFromRedux;
+    const item = this.state.products.find(item => item._id === articul);
 
-    this.state.products.forEach((item) => {
-      if (item._id === articul) {
-        cart.push(item);
-      }
-    });
-    this.props.cartToRedux(cart);
-    localStorage.setItem('cart', JSON.stringify(cart));
+    this.props.cartToRedux(item);
+    localStorage.setItem('cart', JSON.stringify(cart.concat(item)));
   }
 
   viewCards = () => {

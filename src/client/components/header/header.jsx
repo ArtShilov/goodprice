@@ -1,16 +1,31 @@
 import React, { Component } from 'react';
 import './header.css';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import logo from './logo.png';
+import { selectCart } from '../../redux/selectors/home-page-selectors';
+import { cartToReduxAC } from '../../redux/actions/home-page-actions';
 
-export default class Header extends Component {
+const mapStateToProps = state => ({
+  cartFromRedux: selectCart(state)
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  cartToRedux: cartToReduxAC
+}, dispatch);
+
+class HeaderPage extends Component {
   render() {
+    console.log('TCL: !!!!!!!!cartFromRedux', this.props.cartFromRedux);
+    const amountProducts = this.props.cartFromRedux.length;
+    console.log('TCL: HeaderPage -> render -> amountProducts', amountProducts);
     return (
       <div className="header-container">
         <div className="xf-header__bar">
           <div className="xf-header__logo">
           <Link to="/" className="xf-header__logo-img" role="img" title="Заказать продукты с доставкой на дом в Москве">
-              <i className="fas fa-cannabis"></i>
+              <i className="fas fa-dove"></i>
               <img src={logo} alt="Доставка продуктов на дом в Москве" />
             </Link>
           </div>
@@ -80,13 +95,13 @@ export default class Header extends Component {
                       </path>
                     </svg>
                     <span className="xf-cart-info__icon-count js-popup-cart__count">
-                      2
+                      {this.props.cartFromRedux.length}
                 </span>
                   </span>
                   <span className="xf-cart-info__cost js-popup-cart__cost">
                     <div className="xf-price">
                       <span className="xf-price__roubles js-roubles" data-price="258">
-                        {this.props.price}
+                        202
                   </span>
                       <span className="xf-price__penny">
                         <span className="xf-rouble-symbol">р</span>
@@ -102,3 +117,10 @@ export default class Header extends Component {
     );
   }
 }
+
+const Header = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HeaderPage);
+
+export default Header;
