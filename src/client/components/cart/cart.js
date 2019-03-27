@@ -20,7 +20,8 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 class Cart extends Component {
   state = {
     cart: [],
-    optionsArray: []
+    optionsArray: [],
+    saveMessage: ''
   }
 
   makeCart(draftCart) {
@@ -118,6 +119,7 @@ class Cart extends Component {
       });
       const text = await response.text();
       console.log(text);
+      console.log(response);
     } catch (e) {
       console.error(e);
     }
@@ -167,7 +169,7 @@ class Cart extends Component {
   render() {
     return (
       <div>
-        <button onClick={() => this.saveCart()}>Сохранить корзину</button>
+        <button onClick={() => this.saveCart()}>Сохранить корзину</button> <span>{this.state.saveMessage}</span>
       <div className='flex'>
       <div>{this.viewCart()} </div>
       <div className='shops'>Возможные варианты покупки:
