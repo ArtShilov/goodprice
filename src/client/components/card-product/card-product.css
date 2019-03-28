@@ -54,13 +54,15 @@ body{
 }
 
 .xf-product__favorite-rating-line{
+  padding: 0;
   display: grid;
   grid-template-columns: 2fr 1fr;
+  align-items: center;
 }
 
 .xf-product-rating__stars{
   width: 75px;
-
+  margin-top: 15px;
   padding: 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -93,7 +95,8 @@ body{
 }
 
 .xf-product__title{
-  padding-top: 10px;
+  height: 65px;
+  padding-top: 0px;
   text-align: left;
 }
 
@@ -107,7 +110,7 @@ body{
 
 .xf-product__cost{
   font-weight:bold;
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .xf-price{
@@ -127,7 +130,7 @@ body{
   text-align: left;
   width: 100%;
   height: 44px;
-  margin-top: 14px;
+  margin-top: 10px;
   background-color: #B2D136;
   border-radius: 5px;
 }
@@ -138,7 +141,7 @@ body{
   cursor: pointer;
   width: 100%;
   height: 44px;
-  margin-top: 14px;
+  margin-top: 10px;
   background-color: #018B44;
   border-radius: 5px;
 }
