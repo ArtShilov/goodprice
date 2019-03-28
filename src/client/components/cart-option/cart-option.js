@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import './cart-option.css';
 
 export default class CartOption extends Component {
-  // handleClickFilter = (e) => {
-  //   const shopsName = e.target.getAttribute('shopsname');
-  //   this.props.onClick(shopsName);
-  // }
-
+  
   viewAbsence = () => {
     const { absence } = this.props;
     return absence.map(item => (

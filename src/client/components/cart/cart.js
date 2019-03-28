@@ -5,10 +5,11 @@ import { bindActionCreators } from 'redux';
 import Shop from '../shop/shop';
 import CartElement from '../cart-element/cart-element';
 import CartOption from '../cart-option/cart-option';
-import { pageNameToReduxAC } from '../../redux/actions/home-page-actions';
 // import { inputTextAC } from '../../redux/actions/head-actions';
 // import { selectProducts } from '../../redux/selectors/home-page-selectors';
-import { productsToReduxAC, cartToReduxAC, showProductsAC } from '../../redux/actions/home-page-actions';
+import {
+  productsToReduxAC, cartToReduxAC, showProductsAC, pageNameToReduxAC
+} from '../../redux/actions/home-page-actions';
 import { selectProducts, selectCart, selectShowProducts } from '../../redux/selectors/home-page-selectors';
 
 
@@ -33,12 +34,15 @@ class Cart extends Component {
   }
 
   makeCart(draftCart) {
+    // debugger
     const cart = [];
     if (draftCart.length > 0) {
       // const lastProduct = draftCart[0];
       // cart.push(lastProduct);
+      // debugger
       for (let i = 0; i < draftCart.length; i += 1) {
         let newProduct = true;
+        // debugger
         for (const product of cart) { // eslint-disable-line
           if (product._id === draftCart[i]._id) { // eslint-disable-line
             product.quantity += 1;
@@ -49,6 +53,7 @@ class Cart extends Component {
           draftCart[i].quantity = 1;
           cart.push(draftCart[i]);
         }
+        // debugger
       }
     }
     return cart;
@@ -113,8 +118,8 @@ class Cart extends Component {
 
   viewButton = () => {
     if (!this.props.cart) {
-      return <div>
-      <button onClick={() => this.saveCart()}>Сохранить корзину</button>
+      return <div class='cart-save-button'>
+      <button type="button" class="btn btn-success" onClick={() => this.saveCart()}>Сохранить корзину</button>
       <span>{this.state.saveMessage}</span></div>;
     }
   }
@@ -184,19 +189,35 @@ class Cart extends Component {
         }
       }
       optionsArray.push(shopObj);
-      this.setState({ optionsArray });
     });
+    console.log('TCL: Cart -> getAvailibleOptions -> optionsArray', optionsArray);
+    optionsArray.sort((a, b) => {
+      if ((a.absence.length === 0) && (a.absence.length === 0)) {
+        if (a.total > b.total) {
+          return 1;
+        }
+
+        if (a.name < b.name) {
+          return -1;
+        }
+        return 0;
+      }
+      return 0;
+    });
+    this.setState({ optionsArray });
+    console.log('TCL: Cart -> getAvailibleOptions -> optionsArray', optionsArray);
   }
 
   render() {
     if (this.state.cart.length > 0) {
       return (
-      <div>
+      <div >
       {this.viewButton()}
-      <div className='flex'>
-      <div>{this.viewCart()} </div>
+      <div className='cart-flex'>
+      <div>
+        {this.viewCart()} </div>
       <div className='shops'>Возможные варианты покупки:
-        {this.viewOptions()}
+        <ul >{this.viewOptions()}</ul>
       </div>
       </div>
       </div>);
