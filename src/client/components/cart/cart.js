@@ -46,11 +46,14 @@ class Cart extends Component {
     return cart;
   }
 
-
   async componentDidMount() {
-    const draftCart = JSON.parse(localStorage.getItem('cart'));
-    const cart = this.makeCart(draftCart);
-    await this.setState({ cart });
+    if (this.props.cart) {
+      await this.setState({ cart: this.props.cart });
+    } else {
+      const draftCart = JSON.parse(localStorage.getItem('cart'));
+      const cart = this.makeCart(draftCart);
+      await this.setState({ cart });
+    }
     this.getAvailibleOptions(this.state.cart);
   }
 
@@ -79,7 +82,6 @@ class Cart extends Component {
     this.getAvailibleOptions(cart);
   }
 
-
   viewCart = () => {
     const { cart } = this.state;
     return cart.map(item => (
@@ -94,6 +96,14 @@ class Cart extends Component {
     return optionsArray.map(item => (
      <CartOption key={item.shop} name={item.shop} total={item.total} absence={item.absence} />
     ));
+  }
+
+  viewButton = () => {
+    if (!this.props.cart) {
+      return <div>
+      <button onClick={() => this.saveCart()}>Сохранить корзину</button>
+      <span>{this.state.saveMessage}</span></div>;
+    }
   }
 
   getShops = async (id) => {
@@ -165,11 +175,10 @@ class Cart extends Component {
     });
   }
 
-
   render() {
     return (
       <div>
-        <button onClick={() => this.saveCart()}>Сохранить корзину</button> <span>{this.state.saveMessage}</span>
+      {this.viewButton()}
       <div className='flex'>
       <div>{this.viewCart()} </div>
       <div className='shops'>Возможные варианты покупки:

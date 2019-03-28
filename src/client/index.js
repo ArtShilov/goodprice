@@ -13,10 +13,10 @@ const history = createBrowserHistory();
 const composeEnhancers = composeWithDevTools({});
 
 const initialState = {
-  app: {
-    name: 'Express React Skeleton',
-    say: 'nothing for now'
-  }
+  // app: {
+  //   name: 'Express React Skeleton',
+  //   say: 'nothing for now'
+  // }
 };
 
 const store = createStore(

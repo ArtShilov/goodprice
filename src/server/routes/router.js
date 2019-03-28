@@ -3,38 +3,52 @@ import express from 'express';
 const Product = require('../models/product');
 const Shops = require('../models/shops');
 const Carts = require('../models/cart');
-const authenticationMiddleware = require('../authentication/middleware');
+const authenticationMiddlewareApi = require('../authentication/middleware');
 
 const router = express.Router();
 
 
-router.get('/cart', authenticationMiddleware(), async (req, res) => {
-  // if (req.session.user) {
-  console.log(req.session.user._id);
-  const carts = await Carts.find({ user_id: req.session.user._id });
-  res.status(200);
-  res.send(carts);
-  // } else {
-  //   res.status(401);
-  //   res.send('401 UNAUTHORISED USER');
-  // }
+router.get('/user', (req, res) => {
+  if (req.user) {
+    res.status(200);
+    res.send({ username: req.user.username });
+  } else {
+    res.status(401);
+    res.send('401 UNAUTHORISED USER');
+  }
 });
 
-router.post('/cart', authenticationMiddleware(), async (req, res, next) => {
+
+router.get('/cart', async (req, res) => {
   try {
-    console.log(req.session.user._id);
-    // if (req.session.user) {
-    const cart = new Carts({
-      user_id: req.session.user.userName,
-      cart: req.body.cart
-    });
-    await cart.save();
-    res.status(200);
-    res.send('CART SAVED');
-    // } else {
-    //   res.status(500);
-    //   res.send('CART NOT SAVED');
-    // }
+    if (req.user) {
+      const carts = await Carts.find({ user_id: req.user._id });
+      res.status(200);
+      res.send(carts);
+    } else {
+      res.status(401);
+      res.send('401 UNAUTHORISED USER');
+    }
+  } catch (error) {
+    console.log(error.message);
+    next(error);
+  }
+});
+
+router.post('/cart', async (req, res, next) => {
+  try {
+    if (req.user) {
+      const cart = new Carts({
+        user_id: req.user._id,
+        cart: req.body.cart
+      });
+      await cart.save();
+      res.status(200);
+      res.send('CART SAVED');
+    } else {
+      res.status(401);
+      res.send('401 UNAUTHORISED USER');
+    }
   } catch (error) {
     console.log(error.message);
     next(error);
@@ -50,8 +64,6 @@ router.get('/products', async (req, res) => {
 
 router.get('/products/shop', async (req, res) => {
   const shops = await Shops.find();
-
-
   res.status(200);
   res.send(shops);
 });
