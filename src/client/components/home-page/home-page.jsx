@@ -36,7 +36,7 @@ class HomePage extends Component {
     const cart = this.props.cartFromRedux;
     const item = this.props.productsFromRedux.find(item => item._id === articul);
 
-    this.props.cartToRedux(item);
+    this.props.cartToRedux(cart.concat(item));
     localStorage.setItem('cart', JSON.stringify(cart.concat(item)));
   }
 
