@@ -6,6 +6,7 @@ import Shop from '../shop/shop';
 import CardProduct from '../card-product/card-product';
 // import { inputTextAC } from '../../redux/actions/head-actions';
 import { selectProducts } from '../../redux/selectors/home-page-selectors';
+import { pageNameToReduxAC } from '../../redux/actions/home-page-actions';
 
 
 const mapStateToProps = state => ({
@@ -13,7 +14,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  // inputText: inputTextAC
+  pageNameToRedux: pageNameToReduxAC
 }, dispatch);
 
 class BigProductPage extends Component {
@@ -46,6 +47,7 @@ class BigProductPage extends Component {
 
 
   componentDidMount() {
+    this.props.pageNameToRedux('Товар');
     this.getShops();
     if (this.props.productsFromRedux.length === 0) { this.getProduct(); }
     if (this.props.productsFromRedux.length !== 0) {
