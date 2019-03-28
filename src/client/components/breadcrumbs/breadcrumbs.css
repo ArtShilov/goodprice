@@ -6,7 +6,7 @@
   border-radius: 5px;
   box-shadow: 0 0 2px rgba(0,0,0,.2);
   overflow: hidden;
-  width: 965px;
+  width: 955px;
   }
   
  #breadcrumbs-one li{
@@ -79,10 +79,12 @@
     color: #444444;
     position: absolute;
     top:11px;
-    right: 20px;
+    right: 0px;
   }
 
   .absolute a {
+    text-decoration: none;
     margin-left:10px;
+    color: #444444;
   }
  

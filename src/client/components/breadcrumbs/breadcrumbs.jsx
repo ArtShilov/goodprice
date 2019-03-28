@@ -20,8 +20,8 @@ class Breadcrumbs extends Component {
         <a href="/user/logout">Выйти</a>
       </div>;
     }
-    return <div> <a href="/user/signup">Регистрация</a>
-      <a href="/user/login">Войти</a>
+    return <div> <a data-toggle="modal" data-target="#exampleModalCenter1">Регистрация</a>
+      <a data-toggle="modal" data-target="#exampleModalCenter">Войти</a>
     </div>;
   }
 
@@ -37,13 +37,13 @@ class Breadcrumbs extends Component {
             <a href="" className="current">Каталог</a>
           </li>
         </ul>
-        <a className="absolute" data-toggle="modal" data-target="#exampleModalCenter">Войти</a>
         <div className="absolute">
           {this.viewAuth()}
         </div>
         <div>
           <h1 className="xf-caption__title">Каталог товаров</h1>
         </div>
+
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -62,49 +62,52 @@ class Breadcrumbs extends Component {
 
                 <a href="/user/auth/facebook">Login or Register with Facebook</a>
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form action="/user/signup" method="post">
+                  <div>
+                    <label class="labelClass" >Username:</label>
+                    <input type="text" name="username" />
+                  </div>
+                  <div>
+                    <label class="labelClass">Email:</label>
+                    <input type="text" name="email" />
+                  </div>
+                  <div>
+                    <label class="labelClass" >Password:</label>
+                    <input type="password" name="password" />
+                  </div>
+                  <div>
+                    <input class="btn btn-primary" type="submit" value="Sign Up" />
+                  </div>
+                </form>
+
+                <a href="/user/auth/facebook">Login or Register with Facebook</a>
               </div>
             </div>
           </div>
         </div>
+
       </div>
     );
   }
 }
 
-<<<<<<< HEAD
-// < !--Button trigger modal-- >
-//   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-//     Запустить модальное окно
-// </button>
-
-//   <!--Modal -->
-//     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-//       <div class="modal-dialog modal-dialog-centered" role="document">
-//         <div class="modal-content">
-//           <div class="modal-header">
-//             <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-//             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-//               <span aria-hidden="true">&times;</span>
-//             </button>
-//           </div>
-//           <div class="modal-body">
-//             ...
-//       </div>
-//           <div class="modal-footer">
-//             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-//             <button type="button" class="btn btn-primary">Save changes</button>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-=======
 
 const BreadcrumbsApp = connect(
   mapStateToProps,
   mapDispatchToProps
 )(Breadcrumbs);
 export default BreadcrumbsApp;
->>>>>>> 5f7c53cd62d0d4d120a1b90ce8762fa4ea1550a2
