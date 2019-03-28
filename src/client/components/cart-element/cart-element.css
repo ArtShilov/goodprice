@@ -9,18 +9,18 @@
   font-size: 24px;
 }
 
-.xf-catalog-market__link {
+.catalog-market__link {
   margin-top: 5px;
   margin-left: 5px;
   display: grid;
   grid-template-columns: 1fr 6fr;
 }
 
-.xf-catalog-market-list{
+.catalog-market-list{
   padding: 0;
 }
 
-.xf-catalog-market__item{
+.catalog-market__item{
   margin-bottom: 10px;
   border: 1px solid #e5e5e5;
   border-radius: 4px;
@@ -28,7 +28,7 @@
   height: 40px;
 }
 
-.xf-catalog-market__text{
+.catalog-market__text{
   margin-top: 5px;
   font-size: 16px;
   color: #000000;
@@ -44,7 +44,7 @@
   height: 100px;
 }
 
-.cart-element-item:hover .xf-catalog-market__text{
+.cart-element-item:hover .catalog-market__text{
   font-weight: bold;
   color: #B2D136;
 }

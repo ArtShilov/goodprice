@@ -19,12 +19,12 @@
   color: #B2D136;
 }
 
-.xf-b{
+.b{
   padding-left: 10px;
   margin-top: 20px;
 }
 
-.xf-paginator__more{
+.paginator__more{
   width: 700px;
   height: 45px;
   margin-left: 18px;
@@ -36,7 +36,7 @@
   color: #ffffff;
 }
 
-.xf-paginator__more:hover{
+.paginator__more:hover{
   width: 700px;
   height: 45px;
   margin-left: 18px;
@@ -48,20 +48,19 @@
   cursor: pointer;
 }
 
-.xf-paginator__items-wrap{
+.paginator__items-wrap{
   display: flex;
   justify-content: center;
 }
 
-.xf-paginator__items{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+.paginator__items{
+  display: flex;
   align-items: center;
   border: 1px solid #e5e5e5;
   border-radius: 5px;
 }
 
-.xf-paginator__item{
+.paginator__item{
   color: #000000;
   font-weight: bold;
   text-align: center;
@@ -71,11 +70,11 @@
   border-right: 1px solid #e5e5e5;
 }
 
-.xf-paginator__item:nth-child(2){
+.paginator-activ{
   background-color: #B2D136;  
 }
 
-.xf-paginator__item:hover{
+.paginator__item:hover{
   cursor: pointer;
   background-color: #018B44;
   color: #000000;
@@ -86,12 +85,12 @@
   width: 50px;
 }
 
-.xf-paginator__item:last-child{
+.paginator__item:last-child{
   border-right: none;  
 }
 
-#xf-svg__previous,
-#xf-svg__next{
+#svg__previous,
+#svg__next{
   margin: 0;
   width: 27px;
   height: 25px;

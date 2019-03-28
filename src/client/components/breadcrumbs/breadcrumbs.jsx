@@ -22,8 +22,8 @@ class Breadcrumbs extends Component {
         <a href="/user/logout">Выйти</a>
       </div>;
     }
-    return <div> <a data-toggle="modal" data-target="#exampleModalCenter1">Регистрация</a>
-      <a data-toggle="modal" data-target="#exampleModalCenter">Войти</a>
+    return <div> <a className="profile-link" data-toggle="modal" data-target="#exampleModalCenter1">Регистрация</a>
+      <a className="profile-link" data-toggle="modal" data-target="#exampleModalCenter">Войти</a>
     </div>;
   }
 
@@ -68,9 +68,9 @@ class Breadcrumbs extends Component {
                     <input name="password" type="password" className="form-control" placeholder="Password" />
                   </div>
                   <button type="submit" className="btn btn-secondary">Submit</button>
-                  <div className="xf-footer-social__item _fb xf-footer-social__item-modal">
-                    <a className="xf-footer-social__link" href="/user/auth/facebook" title="Facebook">
-                      <svg id="xf-svg__facebook" viewBox="0 0 32 32" width="100%" height="100%">
+                  <div className="footer-social__item _fb footer-social__item-modal">
+                    <a className="footer-social__link" href="/user/auth/facebook" title="Facebook">
+                      <svg id="svg__facebook" viewBox="0 0 32 32" width="100%" height="100%">
                         <title>facebook</title>
                         <path
                           d="M7.441 10.251h4.686v-2.583c0-1.474 0.038-3.76 1.112-5.166 1.13-1.539 2.932-2.527 4.965-2.527 0.138 0 0.276 0.005 0.412 0.014 0.265-0.014 0.597-0.022 0.931-0.022 1.861 0 3.667 0.233 5.392 0.67l-1.015 5.088c-0.826-0.241-1.78-0.394-2.764-0.422-1.361 0-2.562 0.48-2.562 1.828v3.12h5.502l-0.384 4.766h-5.339v16.846h-6.254v-16.846h-4.686v-4.766z">
@@ -112,9 +112,9 @@ class Breadcrumbs extends Component {
                     <input name="password" type="password" className="form-control" placeholder="Password" />
                   </div>
                   <button type="submit" className="btn btn-secondary">Submit</button>
-                  <div className="xf-footer-social__item _fb xf-footer-social__item-modal">
-                    <a className="xf-footer-social__link" href="/user/auth/facebook" title="Facebook">
-                      <svg id="xf-svg__facebook" viewBox="0 0 32 32" width="100%" height="100%">
+                  <div className="footer-social__item _fb footer-social__item-modal">
+                    <a className="footer-social__link" href="/user/auth/facebook" title="Facebook">
+                      <svg id="svg__facebook" viewBox="0 0 32 32" width="100%" height="100%">
                         <title>facebook</title>
                         <path
                           d="M7.441 10.251h4.686v-2.583c0-1.474 0.038-3.76 1.112-5.166 1.13-1.539 2.932-2.527 4.965-2.527 0.138 0 0.276 0.005 0.412 0.014 0.265-0.014 0.597-0.022 0.931-0.022 1.861 0 3.667 0.233 5.392 0.67l-1.015 5.088c-0.826-0.241-1.78-0.394-2.764-0.422-1.361 0-2.562 0.48-2.562 1.828v3.12h5.502l-0.384 4.766h-5.339v16.846h-6.254v-16.846h-4.686v-4.766z">
