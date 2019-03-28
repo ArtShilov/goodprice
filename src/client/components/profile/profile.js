@@ -1,8 +1,21 @@
 import React, { Component } from 'react';
 import './profile.css';
+import { connect } from 'react-redux';
 import CartPage from '../cart/cart';
+import { pageNameToReduxAC } from '../../redux/actions/home-page-actions';
+import { bindActionCreators } from 'redux';
 
-export default class Profile extends Component {
+
+const mapStateToProps = state => ({
+  // productsFromRedux: selectProducts(state)
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  pageNameToRedux: pageNameToReduxAC
+}, dispatch);
+
+
+class Profile extends Component {
   state = {
     carts: []
   }
@@ -28,6 +41,7 @@ export default class Profile extends Component {
   };
 
   componentDidMount() {
+    this.props.pageNameToRedux('Профиль');
     this.getCarts();
   }
 
@@ -39,3 +53,11 @@ export default class Profile extends Component {
     );
   }
 }
+
+
+const ProfilePage = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Profile);
+
+export default ProfilePage;

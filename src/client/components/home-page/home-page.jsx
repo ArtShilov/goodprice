@@ -4,9 +4,12 @@ import { bindActionCreators } from 'redux';
 import CardProduct from '../card-product/card-product';
 import SubFilter from '../sub-filter/sub-filter';
 import './home-page.css';
-import { productsToReduxAC, cartToReduxAC, showProductsAC } from '../../redux/actions/home-page-actions';
+import {
+  productsToReduxAC, cartToReduxAC, showProductsAC, pageNameToReduxAC
+} from '../../redux/actions/home-page-actions';
 import { selectProducts, selectCart, selectShowProducts } from '../../redux/selectors/home-page-selectors';
 import { selectSearchText } from '../../redux/selectors/header-selector';
+import elbrus from './elbrus.png';
 
 const mapStateToProps = state => ({
   cartFromRedux: selectCart(state),
@@ -18,7 +21,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => bindActionCreators({
   cartToRedux: cartToReduxAC,
   productsToRedux: productsToReduxAC,
-  showProducts: showProductsAC
+  showProducts: showProductsAC,
+  pageNameToRedux: pageNameToReduxAC
 }, dispatch);
 
 class HomePage extends Component {
@@ -30,6 +34,7 @@ class HomePage extends Component {
     this.getCart();
     this.getShops();
     this.getProducts();
+    this.props.pageNameToRedux('Каталог');
   }
 
   handleClickCardBtn = (articul) => {
@@ -149,8 +154,8 @@ class HomePage extends Component {
           </ul>
           <ul className="xf-b js-xf-b _catalog-under-filters" data-id="block_19">
             <li className="js-xf-carousel__item swiper-slide" data-id="banner__1182">
-              <a href="/catalog/krasota-gigiena-bytovaya-himiya/sredstva-lichnoy-gigieny/podguzniki-dlya-vzroslyh/terezal-prokl-micro-ur-jen-24sht--459871">
-                <img src="https://www.perekrestok.ru/src/banner/77/42/4277.png" className="banner-img" />
+              <a href="https://elbrusboot.camp/">
+                <img width='220px' src={elbrus} className="banner-img" />
               </a>
             </li>
           </ul>
