@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './breadcrumbs.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
 import { selectUsername } from '../../redux/selectors/app-selectors';
 
 const mapStateToProps = state => ({
@@ -15,7 +16,7 @@ class Breadcrumbs extends Component {
   viewAuth = () => {
     const { usernameFromRedux } = this.props;
     if (usernameFromRedux !== undefined) {
-      return <div><a href="/user/profile">{usernameFromRedux}</a>
+      return <div><Link to='/profile'>{usernameFromRedux}</Link>
     <a href="/user/logout">Выйти</a>
     </div>;
     }
