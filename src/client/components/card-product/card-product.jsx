@@ -84,6 +84,14 @@ export default class CardProductPage extends Component {
           </span>
             </div>
           </div>
+          <div className="xf-product__cost xf-product-cost">
+            <div className="xf-price xf-product-cost__current js-product__cost " data-cost="37.9" data-type="шт">
+              <span className="xf-price__rouble">{this.props.maxPrice}</span>
+              <span className="xf-price__unit">
+                р/шт
+          </span>
+            </div>
+          </div>
           <div className="xf-product__to-cart xf-product-to-cart product_calc">
             <button id={this.props.id} onClick={this.handleClickCardBtn} className="xf-add-to-cart-btn js-product__add  ">
               В корзину

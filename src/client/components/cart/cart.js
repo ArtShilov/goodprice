@@ -189,7 +189,8 @@ class Cart extends Component {
   }
 
   render() {
-    return (
+    if (this.state.cart.length > 0) {
+      return (
       <div>
       {this.viewButton()}
       <div className='flex'>
@@ -199,6 +200,10 @@ class Cart extends Component {
       </div>
       </div>
       </div>);
+    }
+    return (<div>
+       К сожалению, корзина пуста.
+    </div>);
   }
 }
 

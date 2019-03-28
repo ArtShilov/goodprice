@@ -11,13 +11,13 @@ export default class Footer extends Component {
             <div className="xf-footer__logo">
               <div className="xf-footer-logo">
                 <i className="fas fa-dove"></i>
-                <img className="xf-footer-logo__image" src={logo} alt="X5 Retail Group" />
+                <img className="xf-footer-logo__image" src={logo} alt="Good Price" />
               </div>
             </div>
             <div className="xf-footer__social">
               <ul className="xf-footer-social">
                 <li className="xf-footer-social__item _fb">
-                  <a className="xf-footer-social__link" href="https://www.facebook.com/perekrestok" title="Facebook">
+                  <a className="xf-footer-social__link" href="#" title="Facebook">
                     <svg id="xf-svg__facebook" viewBox="0 0 32 32" width="100%" height="100%">
                       <title>facebook</title>
                       <path
@@ -27,7 +27,7 @@ export default class Footer extends Component {
                   </a>
                 </li>
                 <li className="xf-footer-social__item _vk">
-                  <a className="xf-footer-social__link" href="https://vk.com/perekrestok_shop" title="ВКонтакте">
+                  <a className="xf-footer-social__link" href="#" title="ВКонтакте">
                     <svg id="xf-svg__vk" viewBox="0 0 32 32" width="100%" height="100%">
                       <title>vk</title>
                       <path
@@ -37,7 +37,7 @@ export default class Footer extends Component {
                   </a>
                 </li>
                 <li className="xf-footer-social__item _tw">
-                  <a className="xf-footer-social__link" href="https://twitter.com/perekrestok" title="Twitter">
+                  <a className="xf-footer-social__link" href="#" title="Twitter">
                     <svg id="xf-svg__twitter" viewBox="0 0 32 32" width="100%" height="100%">
                       <title>twitter</title>
                       <path
@@ -47,7 +47,7 @@ export default class Footer extends Component {
                   </a>
                 </li>
                 <li className="xf-footer-social__item _youtube">
-                  <a className="xf-footer-social__link" href="https://www.youtube.com/channel/UCY9Nwfy_8drHqif0iryQ7Vw"
+                  <a className="xf-footer-social__link" href="#"
                     title="Youtube">
                     <svg id="xf-svg__youtube" viewBox="0 0 32 32" width="100%" height="100%">
                       <title>youtube</title>
@@ -58,7 +58,7 @@ export default class Footer extends Component {
                   </a>
                 </li>
                 <li className="xf-footer-social__item _ok">
-                  <a className="xf-footer-social__link" href="https://ok.ru/perekrestok.shop" title="Одноклассники">
+                  <a className="xf-footer-social__link" href="#" title="Одноклассники">
                     <svg id="xf-svg__ok" viewBox="0 0 32 32" width="100%" height="100%">
                       <title>ok</title>
                       <path
@@ -71,7 +71,7 @@ export default class Footer extends Component {
                   </a>
                 </li>
                 <li className="xf-footer-social__item _ig">
-                  <a className="xf-footer-social__link" href="http://instagram.com/perekrestok" title="Instagram">
+                  <a className="xf-footer-social__link" href="#" title="Instagram">
                     <svg id="xf-svg__ig" viewBox="0 0 32 32" width="100%" height="100%">
                       <title>ig</title>
                       <path
