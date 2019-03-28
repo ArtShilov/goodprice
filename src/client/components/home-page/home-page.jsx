@@ -9,6 +9,7 @@ import {
 } from '../../redux/actions/home-page-actions';
 import { selectProducts, selectCart, selectShowProducts } from '../../redux/selectors/home-page-selectors';
 import { selectSearchText } from '../../redux/selectors/header-selector';
+import elbrus from './elbrus.png';
 
 const mapStateToProps = state => ({
   cartFromRedux: selectCart(state),
@@ -153,8 +154,8 @@ class HomePage extends Component {
           </ul>
           <ul className="xf-b js-xf-b _catalog-under-filters" data-id="block_19">
             <li className="js-xf-carousel__item swiper-slide" data-id="banner__1182">
-              <a href="/catalog/krasota-gigiena-bytovaya-himiya/sredstva-lichnoy-gigieny/podguzniki-dlya-vzroslyh/terezal-prokl-micro-ur-jen-24sht--459871">
-                <img src="https://www.perekrestok.ru/src/banner/77/42/4277.png" className="banner-img" />
+              <a href="https://elbrusboot.camp/">
+                <img width='220px' src={elbrus} className="banner-img" />
               </a>
             </li>
           </ul>
