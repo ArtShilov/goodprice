@@ -93,6 +93,7 @@ class HomePage extends Component {
         img={item.img}
         name={item.name}
         price={item.lowPrice}
+        maxPrice={item.maxPrice}
       /> // eslint-disable-line
     ));
   }

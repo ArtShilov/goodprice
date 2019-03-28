@@ -54,9 +54,9 @@ class HeaderPage extends Component {
       <div className="header-container">
         <div className="header__bar">
           <div className="header__logo">
-            <Link to="/" className="header__logo-img" role="img" title="Заказать продукты с доставкой на дом в Москве">
+            <Link to="/" className="header__logo-img" role="img" title="Выбрирайте лучшие цены в интернет магазинах Москвы!">
               <i className="fas fa-dove"></i>
-              <img src={logo} alt="Доставка продуктов на дом в Москве" />
+              <img src={logo} alt="Выбрирайте лучшие цены в интернет магазинах Москвы!" />
             </Link>
           </div>
           <div className="header__search">
