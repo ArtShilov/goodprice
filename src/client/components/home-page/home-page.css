@@ -70,7 +70,7 @@
   border-right: 1px solid #e5e5e5;
 }
 
-.paginator__item:nth-child(2){
+.paginator-activ{
   background-color: #B2D136;  
 }
 

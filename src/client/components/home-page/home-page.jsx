@@ -54,6 +54,26 @@ class HomePage extends Component {
     });
   }
 
+  handleClickPaginatorMore = () => {
+    this.setState({
+      productsPerPage: this.state.productsPerPage + 6
+    });
+  }
+
+  handleClickPaginatorPrev = () => {
+    if (this.state.currentPage > 1) {
+      this.setState({
+        currentPage: this.state.currentPage - 1
+      });
+    }
+  }
+
+  handleClickPaginatorNext = () => {
+    this.setState({
+      currentPage: this.state.currentPage + 1
+    });
+  }
+
   viewCards = () => {
     const { currentPage, productsPerPage } = this.state;
     console.log('TCL: HomePage -> viewCards -> currentPage', currentPage);
@@ -167,7 +187,13 @@ class HomePage extends Component {
       pageNumbers.push(i);
     }
 
-    const renderPageNumbers = pageNumbers.map(number => (<a onClick={this.handleClickPagination} className="paginator__item js-paginator__btn" data-type="btn" id={number}>{number}</a>));
+    const renderPageNumbers = pageNumbers.map((number) => {
+      if (this.state.currentPage === number) {
+        return (<a onClick={this.handleClickPagination} className="paginator-activ paginator__item js-paginator__btn" data-type="btn" id={number}>{number}</a>);
+      }
+      return (<a onClick={this.handleClickPagination} className="paginator__item js-paginator__btn" data-type="btn" id={number}>{number}</a>);
+    });
+
     return (
       <div className='home-page'>
         {/* <button onClick={this.test}>test</button> */}
@@ -190,18 +216,18 @@ class HomePage extends Component {
           </div>
           <aside className="paginator  js-paginator " data-count="1815">
             <div className="paginator__more-wrap">
-              <button type="button" className="paginator__more js-paginator__more-btn">Показать еще товары</button>
+              <button onClick={this.handleClickPaginatorMore} type="button" className="paginator__more js-paginator__more-btn">Показать еще товары</button>
             </div>
             <div className="paginator__items-wrap">
               <div className="paginator__items">
-                <a href="#&amp;page=2&amp;sort=rate_desc" className="paginator__item js-paginator__prev">
+                <a onClick={this.handleClickPaginatorPrev} href="#&amp;page=2&amp;sort=rate_desc" className="paginator__item js-paginator__prev">
                   <svg id="svg__previous" viewBox="0 0 32 32" width="100%" height="100%">
                     <title>previous</title>
                     <path d="M23.2 31.467c0.533 0 1.067-0.133 1.467-0.533 0.8-0.8 0.8-2 0-2.8l-12.4-12.4 12.4-12.4c0.8-0.8 0.8-2 0-2.8s-2-0.8-2.8 0l-15.2 15.2 15.2 15.2c0.4 0.4 0.8 0.533 1.333 0.533z"></path>
                   </svg>
                 </a>
                 {renderPageNumbers}
-                <a onClick={this.handleClickPagination} className="paginator__item js-paginator__next" rel="next">
+                <a onClick={this.handleClickPaginatorNext} className="paginator__item js-paginator__next" rel="next">
                   <svg id="svg__next" viewBox="0 0 32 32" width="100%" height="100%">
                     <title>next</title>
                     <path d="M8.667 31.467c-0.533 0-1.067-0.133-1.467-0.533-0.8-0.8-0.8-2 0-2.8l12.4-12.4-12.4-12.4c-0.8-0.667-0.8-2 0-2.8s2.133-0.8 2.933 0l15.2 15.2-15.2 15.2c-0.4 0.4-0.933 0.533-1.467 0.533z"></path>
