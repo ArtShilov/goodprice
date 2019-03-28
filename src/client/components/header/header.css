@@ -15,6 +15,7 @@ a {
 .fa-dove {
   color: #B2D136;
   font-size: 40px;
+  text-decoration: none;
 }
 
 .xf-header__logo, .xf-header__logo-img>img {

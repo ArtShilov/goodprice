@@ -48,19 +48,36 @@ class Breadcrumbs extends Component {
           <div className="modal-dialog modal-dialog-centered" role="document">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <h5 className="modal-title" id="exampleModalLongTitle">Вход</h5>
+
                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div className="modal-body">
                 <form action="/user/login" method="post">
-                  <input name="username" id="username" type="text" placeholder="Your username" />
-                  <input name="password" id="password" type="password" placeholder="Your password" />
-                  <input type="submit" />
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Username</label>
+                    <input name="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+                  </div>
+                  <button type="submit" class="btn btn-secondary">Submit</button>
+                  <div className="xf-footer-social__item _fb xf-footer-social__item-modal">
+                    <a className="xf-footer-social__link" href="/user/auth/facebook" title="Facebook">
+                      <svg id="xf-svg__facebook" viewBox="0 0 32 32" width="100%" height="100%">
+                        <title>facebook</title>
+                        <path
+                          d="M7.441 10.251h4.686v-2.583c0-1.474 0.038-3.76 1.112-5.166 1.13-1.539 2.932-2.527 4.965-2.527 0.138 0 0.276 0.005 0.412 0.014 0.265-0.014 0.597-0.022 0.931-0.022 1.861 0 3.667 0.233 5.392 0.67l-1.015 5.088c-0.826-0.241-1.78-0.394-2.764-0.422-1.361 0-2.562 0.48-2.562 1.828v3.12h5.502l-0.384 4.766h-5.339v16.846h-6.254v-16.846h-4.686v-4.766z">
+                        </path>
+                      </svg>
+                    </a>
+                  </div>
                 </form>
 
-                <a href="/user/auth/facebook">Login or Register with Facebook</a>
               </div>
             </div>
           </div>
@@ -70,31 +87,41 @@ class Breadcrumbs extends Component {
           <div className="modal-dialog modal-dialog-centered" role="document">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <h5 className="modal-title" id="exampleModalLongTitle">Регистрация</h5>
                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div className="modal-body">
+
                 <form action="/user/signup" method="post">
-                  <div>
-                    <label className="labelClass" >Username:</label>
-                    <input type="text" name="username" />
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Username</label>
+                    <input name="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                   </div>
-                  <div>
-                    <label className="labelClass">Email:</label>
-                    <input type="text" name="email" />
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input name="email" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                   </div>
-                  <div>
-                    <label className="labelClass" >Password:</label>
-                    <input type="password" name="password" />
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
                   </div>
-                  <div>
-                    <input className="btn btn-primary" type="submit" value="Sign Up" />
+                  <button type="submit" class="btn btn-secondary">Submit</button>
+                  <div className="xf-footer-social__item _fb xf-footer-social__item-modal">
+                    <a className="xf-footer-social__link" href="/user/auth/facebook" title="Facebook">
+                      <svg id="xf-svg__facebook" viewBox="0 0 32 32" width="100%" height="100%">
+                        <title>facebook</title>
+                        <path
+                          d="M7.441 10.251h4.686v-2.583c0-1.474 0.038-3.76 1.112-5.166 1.13-1.539 2.932-2.527 4.965-2.527 0.138 0 0.276 0.005 0.412 0.014 0.265-0.014 0.597-0.022 0.931-0.022 1.861 0 3.667 0.233 5.392 0.67l-1.015 5.088c-0.826-0.241-1.78-0.394-2.764-0.422-1.361 0-2.562 0.48-2.562 1.828v3.12h5.502l-0.384 4.766h-5.339v16.846h-6.254v-16.846h-4.686v-4.766z">
+                        </path>
+                      </svg>
+                    </a>
                   </div>
                 </form>
 
-                <a href="/user/auth/facebook">Login or Register with Facebook</a>
               </div>
             </div>
           </div>
