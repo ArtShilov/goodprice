@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import Shop from '../shop/shop';
 import CartElement from '../cart-element/cart-element';
 import CartOption from '../cart-option/cart-option';
+import { pageNameToReduxAC } from '../../redux/actions/home-page-actions';
 // import { inputTextAC } from '../../redux/actions/head-actions';
 // import { selectProducts } from '../../redux/selectors/home-page-selectors';
 import { productsToReduxAC, cartToReduxAC, showProductsAC } from '../../redux/actions/home-page-actions';
@@ -18,6 +19,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
+  pageNameToRedux: pageNameToReduxAC,
   cartToRedux: cartToReduxAC
 
   // inputText: inputTextAC
@@ -53,6 +55,7 @@ class Cart extends Component {
   }
 
   async componentDidMount() {
+    this.props.pageNameToRedux('Корзина');
     if (localStorage.getItem('cart')) {
       this.props.cartToRedux(JSON.parse(localStorage.getItem('cart')));
     }
