@@ -98,19 +98,20 @@ export const seed = async () => {
     // console.log(products);
   for (const item of products) { // eslint-disable-line
     const shops = await Shops.find({ product_id: item._id }); // eslint-disable-line
-      let lowPrice = 0;
-    for (const shopItem of shops) { // eslint-disable-line
-        if (shopItem.price > lowPrice) {
-          lowPrice = shopItem.price;
+      console.log(shops);
+      let lowPrice = shops[0].price || 0;
+    for (let i=0; i<shops.length; i+=1) { // eslint-disable-line
+        if ((shops[i].price < lowPrice) && (shops[i].presence !== 0)) {
+          lowPrice = shops[i].price;
         }
       }
-      // console.log(lowPrice);
+      console.log(`${item.name}: ${lowPrice}`);
     await Product.findOneAndUpdate({ _id: item._id }, { lowPrice }); // eslint-disable-line
     }
   };
 
   try {
-    await getFromParser();
+    // await getFromParser();
     setLowerPrice();
     console.log('finished');
   } catch (e) {
