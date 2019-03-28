@@ -54,8 +54,7 @@
 }
 
 .paginator__items{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  display: flex;
   align-items: center;
   border: 1px solid #e5e5e5;
   border-radius: 5px;
@@ -71,7 +70,7 @@
   border-right: 1px solid #e5e5e5;
 }
 
-.paginator__item:nth-child(2){
+.paginator-activ{
   background-color: #B2D136;  
 }
 
