@@ -15,6 +15,7 @@ a {
 .fa-dove {
   color: #B2D136;
   font-size: 40px;
+  text-decoration: none;
 }
 
 .xf-header__logo, .xf-header__logo-img>img {
@@ -105,7 +106,7 @@ a {
 }
 
 .xf-header-repeat__button {
-  width: 150px;
+  width: 170px;
   display: flex;
   align-items: center;
   height: 40px;
@@ -162,7 +163,7 @@ a {
   border-radius: 50%;
   width: 18px;
   height: 18px;
-  font-size: 14px;
+  font-size: 12px;
   text-align: center;
   font-weight: bold;
   color: #ffffff;
@@ -172,7 +173,7 @@ a {
 }
 
 .xf-cart-info__icon-count {
-  right: 35px;
+  right: 25px;
 }
 
 .xf-price__penny {

@@ -11,7 +11,7 @@ export default function appReducer(state = appReducerInitState, action) {
     case APP_TYPES.Products_To_Redux:
       return { ...state, products: action.products };
     case APP_TYPES.CART_TO_REDUX:
-      return { ...state, cart: state.cart.concat(action.item) };
+      return { ...state, ...action.payload };
     case APP_TYPES.SHOW_PRODUCTS:
       return { ...state, ...action.payload };
     default:

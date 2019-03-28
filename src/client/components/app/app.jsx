@@ -11,6 +11,8 @@ import Header from '../header/header';
 import Breadcrumbs from '../breadcrumbs/breadcrumbs';
 import Footer from '../footer/footer';
 import './app.css';
+import { productsToReduxAC, cartToReduxAC, showProductsAC } from '../../redux/actions/home-page-actions';
+
 
 const cn = bemClassNameFactory('app');
 
@@ -19,6 +21,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
+  cartToRedux: cartToReduxAC,
   usernameToRedux: usernameToReduxAC
 }, dispatch);
 
@@ -26,7 +29,6 @@ class App extends Component {
   state = {
     username: ''
   }
-
 
   getUser = async () => {
     try {
@@ -37,10 +39,12 @@ class App extends Component {
         this.props.usernameToRedux(username);
       }
     } catch (e) {
+      throw e;
     }
   };
 
   componentDidMount() {
+    this.props.cartToRedux(JSON.parse(localStorage.getItem('cart')));
     this.getUser();
   }
 
