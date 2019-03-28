@@ -17,9 +17,9 @@ export default class CartOption extends Component {
   render() {
     return (
       <li >
-        <div className="xf-catalog-market__link cart-element-flex-column">
-          <h3 className="xf-catalog-market__text" >{this.props.name}</h3>
-          <span className="xf-catalog-market__text" >Цена корзины: {this.props.total}</span>
+        <div className="catalog-market__link cart-element-flex-column">
+          <h3 className="catalog-market__text" >{this.props.name}</h3>
+          <span className="catalog-market__text" >Цена корзины: {this.props.total}</span>
          <div> Товары которых нет в данном магазине:
            <ol>
            {this.viewAbsence()}

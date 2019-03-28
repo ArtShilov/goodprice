@@ -89,7 +89,14 @@
     color: #444444;
   }
 
-  .xf-footer-social__item-modal{
+  .profile-link:hover {
+    cursor: pointer;
+    text-decoration: none;
+    margin-left:10px;
+    color: #B2D136;
+  }
+
+  .footer-social__item-modal{
     float: right;
   }
  
