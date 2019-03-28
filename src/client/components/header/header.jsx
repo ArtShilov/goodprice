@@ -106,7 +106,7 @@ class HeaderPage extends Component {
                   </svg>
                   <span className="header-favorites__count js-header__favorite-count">
                     1
-              </span>
+                  </span>
                 </Link>
               </div>
               <div className="cart-info__item js-popup-cart">
