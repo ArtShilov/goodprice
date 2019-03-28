@@ -43,7 +43,14 @@ class HomePage extends Component {
   viewCards = () => {
     const { showProducts1 } = this.props;
     return showProducts1.map(item => (
-      <CardProduct onClick={(a) => this.handleClickCardBtn(a)} key={item._id} id={item._id} img={item.img} name={item.name} price={item.lowPrice} /> // eslint-disable-line
+      <CardProduct
+        onClick={a => this.handleClickCardBtn(a)}
+        key={item._id}
+        id={item._id}
+        img={item.img}
+        name={item.name}
+        price={item.lowPrice}
+      /> // eslint-disable-line
     ));
   }
 

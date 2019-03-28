@@ -46,7 +46,6 @@ class Cart extends Component {
     return cart;
   }
 
-
   async componentDidMount() {
     if (this.props.cart) {
       await this.setState({ cart: this.props.cart });
@@ -82,7 +81,6 @@ class Cart extends Component {
     this.setState({ cart });
     this.getAvailibleOptions(cart);
   }
-
 
   viewCart = () => {
     const { cart } = this.state;
@@ -176,7 +174,6 @@ class Cart extends Component {
       this.setState({ optionsArray });
     });
   }
-
 
   render() {
     return (

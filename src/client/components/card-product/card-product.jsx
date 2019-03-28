@@ -21,6 +21,7 @@ export default class CardProductPage extends Component {
   //   <Redirect path='/'/>;
   //   // this.props.history.push('/');
   // }
+  randomNum = () => Math.ceil(Math.random() * 99)
 
   handleClickCardBtn = (e) => {
     const articul = e.target.getAttribute('id');
@@ -62,7 +63,7 @@ export default class CardProductPage extends Component {
                   <li className="xf-product-rating__star _active">
                     <i className="fas fa-star"></i>
                   </li>
-                </ul><span className="xf-product-rating__count _short">2</span>
+                </ul><span className="xf-product-rating__count _short">{this.randomNum()}</span>
               </div>
               </a>
             <div className="xf-product__favorite xf-product-favorite js-product__favorite " data-key="favorites">
