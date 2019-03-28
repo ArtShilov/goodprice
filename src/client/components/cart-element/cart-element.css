@@ -34,7 +34,7 @@
   color: #000000;
 }
 
-.xf-catalog-market__item:hover{
+.cart-element-item:hover{
   cursor: pointer;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
   margin-bottom: 10px;
@@ -44,7 +44,7 @@
   height: 100px;
 }
 
-.xf-catalog-market__item:hover .xf-catalog-market__text{
+.cart-element-item:hover .xf-catalog-market__text{
   font-weight: bold;
   color: #B2D136;
 }

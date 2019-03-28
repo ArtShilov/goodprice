@@ -13,7 +13,9 @@ export const productsToReduxAC = products => ({
 
 export const cartToReduxAC = item => ({
   type: APP_TYPES.CART_TO_REDUX,
-  item
+  payload: {
+    cart: item
+  }
 });
 
 export const showProductsAC = products => ({
