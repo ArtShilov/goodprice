@@ -90,7 +90,7 @@ class BigProductPage extends Component {
     return (
       <div className='flex'>
       <CardProduct img={this.state.product.img} name={this.state.product.name}
-      price={this.state.product.lowPrice} />
+      price={this.state.product.lowPrice} maxPrice={this.state.product.maxPrice}/>
       <div>{this.viewShops()}</div>
       </div>
     );

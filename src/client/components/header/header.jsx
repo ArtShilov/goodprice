@@ -52,20 +52,20 @@ class HeaderPage extends Component {
   render() {
     return (
       <div className="header-container">
-        <div className="xf-header__bar">
-          <div className="xf-header__logo">
-            <Link to="/" className="xf-header__logo-img" role="img" title="Заказать продукты с доставкой на дом в Москве">
+        <div className="header__bar">
+          <div className="header__logo">
+            <Link to="/" className="header__logo-img" role="img" title="Выбрирайте лучшие цены в интернет магазинах Москвы!">
               <i className="fas fa-dove"></i>
-              <img src={logo} alt="Доставка продуктов на дом в Москве" />
+              <img src={logo} alt="Выбрирайте лучшие цены в интернет магазинах Москвы!" />
             </Link>
           </div>
-          <div className="xf-header__search">
-            <div className="js-header-search-block xf-full-header-search">
-              <input onInput={this.hahdleChangeSearch} className="xf-full-header-search__field tst_header-search js-search-input ui-autocomplete-input"
+          <div className="header__search">
+            <div className="js-header-search-block full-header-search">
+              <input onInput={this.hahdleChangeSearch} className="full-header-search__field tst_header-search js-search-input ui-autocomplete-input"
                 type="search" name="search" placeholder="Поиск товаров" data-key="searchField"
                 data-id="search" />
-              <button onClick={this.hahdleClickSearch} className="xf-full-header-search__btn js-search-btn" type="submit" aria-label="Искать">
-                <svg id="xf-svg__search" viewBox="0 0 32 32" width="30px" height="30px">
+              <button onClick={this.hahdleClickSearch} className="full-header-search__btn js-search-btn" type="submit" aria-label="Искать">
+                <svg id="svg__search" viewBox="0 0 32 32" width="30px" height="30px">
                   <title>search</title>
                   <path
                     d="M26.7 25.3l-5-5c1.3-1.6 2.1-3.7 2.1-5.9 0-5.2-4.2-9.4-9.4-9.4s-9.4 4.2-9.4 9.4c0 5.2 4.2 9.4 9.4 9.4 2.2 0 4.3-0.8 5.9-2.1l5 5c0.2 0.2 0.5 0.3 0.7 0.3 0.3 0 0.5-0.1 0.7-0.3 0.4-0.4 0.4-1 0-1.4zM7 14.4c0-4.1 3.3-7.4 7.4-7.4s7.4 3.3 7.4 7.4c0 4.1-3.3 7.4-7.4 7.4-4.1 0.1-7.4-3.3-7.4-7.4z">
@@ -74,9 +74,9 @@ class HeaderPage extends Component {
               </button>
             </div>
           </div>
-          <div className="xf-header-repeat js-header-repeat">
-            <button className="xf-header-repeat__button js-popup-header-repeat-button">
-              <svg id="xf-svg__repeat" viewBox="0 0 25 24" width="30px" height="30px">
+          <div className="header-repeat js-header-repeat">
+            <button className="header-repeat__button js-popup-header-repeat-button">
+              <svg id="svg__repeat" viewBox="0 0 25 24" width="30px" height="30px">
                 <title>repeat</title>
                 <path
                   d="M3.92519 9.01244L3.92581 9.01027C5.10905 4.9035 8.62416 2.16302 12.643 2.16302C16.7768 2.16302 20.4124 5.12822 21.4664 9.39693C21.5431 9.75453 21.8585 9.99067 22.1912 9.99067C22.1923 9.99067 22.194 9.9907 22.1962 9.99075C22.2205 9.99129 22.3062 9.99317 22.4003 9.95778C22.8213 9.83395 23.0013 9.39548 22.9153 9.03055L22.9153 9.03055L22.9145 9.02699C21.7 4.09222 17.4855 0.625 12.643 0.625C7.93158 0.625 3.85548 3.83343 2.48721 8.56498C2.37284 8.9549 2.5736 9.39142 2.9769 9.52508C3.39501 9.66365 3.80905 9.40655 3.92519 9.01244Z"
@@ -94,25 +94,25 @@ class HeaderPage extends Component {
         </button>
           </div>
         </div>
-        <div className="xf-header__cart">
-          <div className="xf-cart-info">
-            <div className="xf-cart-info__list">
-              <div className="xf-cart-info__item">
-                <Link to='/favorite' className="xf-header-favorites__link js-favorite-link" >
-                  <svg id="xf-svg__heart" viewBox="0 0 37 30" width="34px" height="34px">
+        <div className="header__cart">
+          <div className="cart-info">
+            <div className="cart-info__list">
+              <div className="cart-info__item">
+                <Link to='/favorite' className="header-favorites__link js-favorite-link" >
+                  <svg id="svg__heart" viewBox="0 0 37 30" width="34px" height="34px">
                     <path className="st1"
                       d="M18.5 29.5c-.2 0-.4-.1-.6-.2C17.2 29 2 20.8 2 10.4 2 5 6.2.5 11.3.5c2.8 0 5.5 1.4 7.2 3.6C20.2 1.9 22.8.5 25.7.5 30.8.5 35 5 35 10.4c0 10.5-15.2 18.7-15.8 19-.3.1-.5.1-.7.1zM11.3 3.6c-3.5 0-6.4 3.1-6.4 6.8 0 7.5 10.8 14.3 13.6 15.9 2.8-1.6 13.6-8.4 13.6-15.9 0-3.7-2.9-6.8-6.4-6.8-2.5 0-4.7 1.5-5.7 3.8-.3.5-.8 1-1.5 1-.6 0-1.2-.3-1.5-1-.1-.2-.2-.3-.3-.5-1.1-2.2-3.2-3.3-5.4-3.3z">
                     </path>
                   </svg>
-                  <span className="xf-header-favorites__count js-header__favorite-count">
+                  <span className="header-favorites__count js-header__favorite-count">
                     1
               </span>
                 </Link>
               </div>
-              <div className="xf-cart-info__item js-popup-cart">
-                <Link to="/cart" className="xf-cart-info__link js-popup-cart__link" >
-                  <span className="xf-cart-info__icon js-popup-cart__icon" title="Товары в корзине">
-                    <svg id="xf-svg__cart" viewBox="0 0 32 32" width="34px" height="34px">
+              <div className="cart-info__item js-popup-cart">
+                <Link to="/cart" className="cart-info__link js-popup-cart__link" >
+                  <span className="cart-info__icon js-popup-cart__icon" title="Товары в корзине">
+                    <svg id="svg__cart" viewBox="0 0 32 32" width="34px" height="34px">
                       <title>cart</title>
                       <path
                         d="M13.005 26.227c0 1.166-0.946 2.112-2.112 2.112s-2.112-0.946-2.112-2.112c0-1.166 0.946-2.112 2.112-2.112s2.112 0.946 2.112 2.112z">
@@ -124,7 +124,7 @@ class HeaderPage extends Component {
                         d="M0 5.85h5.734l2.56 16.986h16.64c0.002 0 0.004 0 0.006 0 1.605 0 2.945-1.132 3.267-2.64l-17.583-0.022-0.461-2.995h16.717c0.002 0 0.004 0 0.006 0 1.605 0 2.945-1.132 3.267-2.64l-20.387-0.022-0.422-2.79h19.456c0.002 0 0.004 0 0.006 0 1.605 0 2.945-1.132 3.267-2.64l-23.113-0.022-0.922-5.862h-4.8c0 0-0.001 0-0.001 0-1.593 0-2.922 1.128-3.234 2.628z">
                       </path>
                     </svg>
-                    <span className="xf-cart-info__icon-count js-popup-cart__count">
+                    <span className="cart-info__icon-count js-popup-cart__count">
                       {this.props.cartFromRedux.length}
                     </span>
                   </span>

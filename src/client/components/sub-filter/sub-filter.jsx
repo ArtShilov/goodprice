@@ -9,12 +9,12 @@ export default class SubFilter extends Component {
 
   render() {
     return (
-      <li className="xf-catalog-market__item">
-        <div className="xf-catalog-market__link" href="">
+      <li className="catalog-market__item">
+        <div className="catalog-market__link" href="">
           <div className="market-icon">
             <i className="fas fa-dove fa-dove-icon"></i>
           </div>
-          <span onClick={this.handleClickFilter} className="xf-catalog-market__text" shopsname={this.props.shopsName}>{this.props.title}</span>
+          <span onClick={this.handleClickFilter} className="catalog-market__text" shopsname={this.props.shopsName}>{this.props.title}</span>
         </div>
       </li>
     );
