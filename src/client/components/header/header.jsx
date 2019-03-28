@@ -54,7 +54,7 @@ class HeaderPage extends Component {
       <div className="header-container">
         <div className="xf-header__bar">
           <div className="xf-header__logo">
-          <Link to="/" className="xf-header__logo-img" role="img" title="Заказать продукты с доставкой на дом в Москве">
+            <Link to="/" className="xf-header__logo-img" role="img" title="Заказать продукты с доставкой на дом в Москве">
               <i className="fas fa-dove"></i>
               <img src={logo} alt="Доставка продуктов на дом в Москве" />
             </Link>
@@ -98,7 +98,7 @@ class HeaderPage extends Component {
           <div className="xf-cart-info">
             <div className="xf-cart-info__list">
               <div className="xf-cart-info__item">
-              <Link to='/favorite' className="xf-header-favorites__link js-favorite-link" >
+                <Link to='/favorite' className="xf-header-favorites__link js-favorite-link" >
                   <svg id="xf-svg__heart" viewBox="0 0 37 30" width="34px" height="34px">
                     <path className="st1"
                       d="M18.5 29.5c-.2 0-.4-.1-.6-.2C17.2 29 2 20.8 2 10.4 2 5 6.2.5 11.3.5c2.8 0 5.5 1.4 7.2 3.6C20.2 1.9 22.8.5 25.7.5 30.8.5 35 5 35 10.4c0 10.5-15.2 18.7-15.8 19-.3.1-.5.1-.7.1zM11.3 3.6c-3.5 0-6.4 3.1-6.4 6.8 0 7.5 10.8 14.3 13.6 15.9 2.8-1.6 13.6-8.4 13.6-15.9 0-3.7-2.9-6.8-6.4-6.8-2.5 0-4.7 1.5-5.7 3.8-.3.5-.8 1-1.5 1-.6 0-1.2-.3-1.5-1-.1-.2-.2-.3-.3-.5-1.1-2.2-3.2-3.3-5.4-3.3z">
@@ -107,10 +107,10 @@ class HeaderPage extends Component {
                   <span className="xf-header-favorites__count js-header__favorite-count">
                     1
               </span>
-              </Link>
+                </Link>
               </div>
               <div className="xf-cart-info__item js-popup-cart">
-              <Link to="/cart" className="xf-cart-info__link js-popup-cart__link" >
+                <Link to="/cart" className="xf-cart-info__link js-popup-cart__link" >
                   <span className="xf-cart-info__icon js-popup-cart__icon" title="Товары в корзине">
                     <svg id="xf-svg__cart" viewBox="0 0 32 32" width="34px" height="34px">
                       <title>cart</title>
@@ -128,7 +128,7 @@ class HeaderPage extends Component {
                       {this.props.cartFromRedux.length}
                     </span>
                   </span>
-                  </Link>
+                </Link>
               </div>
             </div>
           </div>

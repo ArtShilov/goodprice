@@ -56,16 +56,16 @@ class Breadcrumbs extends Component {
               </div>
               <div className="modal-body">
                 <form action="/user/login" method="post">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Username</label>
-                    <input name="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                  <div className="form-group">
+                    <label htmlFor="exampleInputEmail1">Username</label>
+                    <input name="username" type="text" className="form-control" aria-describedby="emailHelp" placeholder="Enter email" />
+                    <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                   </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+                  <div className="form-group">
+                    <label htmlFor="exampleInputPassword1">Password</label>
+                    <input name="password" type="password" className="form-control" placeholder="Password" />
                   </div>
-                  <button type="submit" class="btn btn-secondary">Submit</button>
+                  <button type="submit" className="btn btn-secondary">Submit</button>
                   <div className="xf-footer-social__item _fb xf-footer-social__item-modal">
                     <a className="xf-footer-social__link" href="/user/auth/facebook" title="Facebook">
                       <svg id="xf-svg__facebook" viewBox="0 0 32 32" width="100%" height="100%">
@@ -95,21 +95,21 @@ class Breadcrumbs extends Component {
               <div className="modal-body">
 
                 <form action="/user/signup" method="post">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Username</label>
-                    <input name="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                  <div className="form-group">
+                    <label htmlFor="exampleInputEmail1">Username</label>
+                    <input name="username" type="text" className="form-control" aria-describedby="emailHelp" placeholder="Enter email" />
+                    <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                   </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Email</label>
-                    <input name="email" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                  <div className="form-group">
+                    <label htmlFor="exampleInputEmail1">Email</label>
+                    <input name="email" type="text" className="form-control" aria-describedby="emailHelp" placeholder="Enter email" />
+                    <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                   </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+                  <div className="form-group">
+                    <label htmlFor="exampleInputPassword1">Password</label>
+                    <input name="password" type="password" className="form-control" placeholder="Password" />
                   </div>
-                  <button type="submit" class="btn btn-secondary">Submit</button>
+                  <button type="submit" className="btn btn-secondary">Submit</button>
                   <div className="xf-footer-social__item _fb xf-footer-social__item-modal">
                     <a className="xf-footer-social__link" href="/user/auth/facebook" title="Facebook">
                       <svg id="xf-svg__facebook" viewBox="0 0 32 32" width="100%" height="100%">
