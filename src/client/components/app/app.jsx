@@ -62,6 +62,7 @@ class App extends Component {
       <div className="container">
         <Header />
         <div className="hr"></div>
+        <div className="slogan">Выбирайте самые низкие цены из всех магазинов России!</div>
         <Breadcrumbs />
         <div className={cn('main')}>
           {children}

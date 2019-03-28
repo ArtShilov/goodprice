@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+}
+
 :hover{
   transition: 0.5s;
 }
@@ -64,6 +68,11 @@ form {
   font-family: FontAwesome;
   font-size: 16px;
   color: #F9F0DA;
+}
+
+.slogan{
+  text-align: center;
+  color: #FF582A;
 }
 
 .footer {
