@@ -62,14 +62,15 @@ export const seed = async () => {
         await product.save(); // eslint-disable-line
         }
         const savedProduct = await Product.findOne({ name: item.name }); // eslint-disable-line
-        console.log(`savedProduct${savedProduct}`);
-        console.log(savedProduct);
+        // console.log(`savedProduct${savedProduct}`);
+        // console.log(savedProduct);
       for (const shopItem of item.sources) { // eslint-disable-line
         // console.log(shopItem);
         const testShop = await Shops.findOne({ // eslint-disable-line
             name: shopItem.company_name,
           product_id: savedProduct._id // eslint-disable-line
           });
+          // console.log(testShop);
           if (testShop === null) {
             const shop = new Shops({
               name: shopItem.company_name,
@@ -81,9 +82,20 @@ export const seed = async () => {
             });
             // console.log(shop);
             shop.save();
-          } else if ((testShop.price !== shopItem.price)
-        || (testShop.presence !== shopItem.in_stock)) {
-         await Product.findOneAndUpdate({ _id: testShop._id }, { price:shopItem.price, presence:shopItem.in_stock  }); // eslint-disable-line
+          // } else if (testShop.price !== shopItem.price) {
+          //   await Shops.findOneAndUpdate({ _id: testShop._id }, // eslint-disable-line
+          //     { $set: { price: shopItem.price } }, { new: true }, (err, doc) => {
+          //       if (err) {
+          //         console.log('Something wrong when updating data!');
+          //         console.log(err);
+          //       }
+          //       console.log(doc);
+          //     });
+          } else if ((testShop.presence !== shopItem.in_stock) || (testShop.price !== shopItem.price)) {
+            console.log('TCL: getFromParser -> shopItem', shopItem);
+            // console.log('TCL: getFromParser -> shopItem', shopItem.name);
+            console.log('TCL: getFromParser -> testShop', testShop);
+            await Shops.findOneAndUpdate({ _id: testShop._id }, { presence: shopItem.in_stock, price: shopItem.price })  // eslint-disable-line
           }
         }
       }
@@ -98,13 +110,14 @@ export const seed = async () => {
     // console.log(products);
   for (const item of products) { // eslint-disable-line
     const shops = await Shops.find({ product_id: item._id }); // eslint-disable-line
-      let lowPrice = 0;
-    for (const shopItem of shops) { // eslint-disable-line
-        if (shopItem.price > lowPrice) {
-          lowPrice = shopItem.price;
+      // console.log(shops);
+      let lowPrice = shops[0].price || 0;
+    for (let i=0; i<shops.length; i+=1) { // eslint-disable-line
+        if ((shops[i].price < lowPrice) && (shops[i].presence !== 0)) {
+          lowPrice = shops[i].price;
         }
       }
-      // console.log(lowPrice);
+      // console.log(`${item.name}: ${lowPrice}`);
     await Product.findOneAndUpdate({ _id: item._id }, { lowPrice }); // eslint-disable-line
     }
   };
