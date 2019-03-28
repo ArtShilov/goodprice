@@ -12,11 +12,12 @@ import Breadcrumbs from '../breadcrumbs/breadcrumbs';
 import Footer from '../footer/footer';
 import './app.css';
 import { productsToReduxAC, cartToReduxAC, showProductsAC } from '../../redux/actions/home-page-actions';
-
+import { selectProducts, selectCart, selectShowProducts } from '../../redux/selectors/home-page-selectors';
 
 const cn = bemClassNameFactory('app');
 
 const mapStateToProps = state => ({
+  cartFromRedux: selectCart(state),
   usernameFromRedux: selectUsername(state)
 });
 
@@ -44,10 +45,14 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.props.cartToRedux(JSON.parse(localStorage.getItem('cart')));
+    this.getCart();
     this.getUser();
   }
 
+  getCart = () => {
+    // localStorage.setItem('cart', JSON.stringify(this.props.cartFromRedux));
+    // this.props.cartToRedux(JSON.parse(localStorage.getItem('cart')));
+  }
 
   render() {
     const {

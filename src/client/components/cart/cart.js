@@ -7,13 +7,19 @@ import CartElement from '../cart-element/cart-element';
 import CartOption from '../cart-option/cart-option';
 // import { inputTextAC } from '../../redux/actions/head-actions';
 // import { selectProducts } from '../../redux/selectors/home-page-selectors';
+import { productsToReduxAC, cartToReduxAC, showProductsAC } from '../../redux/actions/home-page-actions';
+import { selectProducts, selectCart, selectShowProducts } from '../../redux/selectors/home-page-selectors';
 
 
 const mapStateToProps = state => ({
+  cartFromRedux: selectCart(state)
+
   // productsFromRedux: selectProducts(state)
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
+  cartToRedux: cartToReduxAC
+
   // inputText: inputTextAC
 }, dispatch);
 
@@ -47,6 +53,10 @@ class Cart extends Component {
   }
 
   async componentDidMount() {
+    if (localStorage.getItem('cart')) {
+      this.props.cartToRedux(JSON.parse(localStorage.getItem('cart')));
+    }
+
     if (this.props.cart) {
       await this.setState({ cart: this.props.cart });
     } else {
