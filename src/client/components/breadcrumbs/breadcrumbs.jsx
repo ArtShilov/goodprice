@@ -44,16 +44,16 @@ class Breadcrumbs extends Component {
           <h1 className="xf-caption__title">Каталог товаров</h1>
         </div>
 
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <div className="modal fade" id="exampleModalCenter" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div className="modal-dialog modal-dialog-centered" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body">
+              <div className="modal-body">
                 <form action="/user/login" method="post">
                   <input name="username" id="username" type="text" placeholder="Your username" />
                   <input name="password" id="password" type="password" placeholder="Your password" />
@@ -66,31 +66,31 @@ class Breadcrumbs extends Component {
           </div>
         </div>
 
-        <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle1" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <div className="modal fade" id="exampleModalCenter1" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle1" aria-hidden="true">
+          <div className="modal-dialog modal-dialog-centered" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body">
+              <div className="modal-body">
                 <form action="/user/signup" method="post">
                   <div>
-                    <label class="labelClass" >Username:</label>
+                    <label className="labelClass" >Username:</label>
                     <input type="text" name="username" />
                   </div>
                   <div>
-                    <label class="labelClass">Email:</label>
+                    <label className="labelClass">Email:</label>
                     <input type="text" name="email" />
                   </div>
                   <div>
-                    <label class="labelClass" >Password:</label>
+                    <label className="labelClass" >Password:</label>
                     <input type="password" name="password" />
                   </div>
                   <div>
-                    <input class="btn btn-primary" type="submit" value="Sign Up" />
+                    <input className="btn btn-primary" type="submit" value="Sign Up" />
                   </div>
                 </form>
 
