@@ -4,9 +4,11 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import { selectUsername } from '../../redux/selectors/app-selectors';
+import { selectPageName } from '../../redux/selectors/home-page-selectors';
 
 const mapStateToProps = state => ({
-  usernameFromRedux: selectUsername(state)
+  usernameFromRedux: selectUsername(state),
+  selectPageName: selectPageName(state)
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
@@ -31,17 +33,17 @@ class Breadcrumbs extends Component {
       <div className="xf-wrapper relative">
         <ul id="breadcrumbs-one" className="xf-caption__breadcrumbs xf-breadcrumbs">
           <li className="xf-breadcrumbs__item ">
-            <a className="xf-breadcrumbs__link" href="/">Главная</a>
+          <Link to="/" className="xf-breadcrumbs__link" >Главная</Link>
           </li>
           <li className="current xf-breadcrumbs__item _last">
-            <a href="" className="current">Каталог</a>
+            <a href="" className="current">{this.props.selectPageName}</a>
           </li>
         </ul>
         <div className="absolute">
           {this.viewAuth()}
         </div>
         <div>
-          <h1 className="xf-caption__title">Каталог товаров</h1>
+          <h1 className="xf-caption__title">{this.props.selectPageName}</h1>
         </div>
 
         <div className="modal fade" id="exampleModalCenter" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

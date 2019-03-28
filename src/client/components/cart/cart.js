@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import Shop from '../shop/shop';
 import CartElement from '../cart-element/cart-element';
 import CartOption from '../cart-option/cart-option';
+import { pageNameToReduxAC } from '../../redux/actions/home-page-actions';
 // import { inputTextAC } from '../../redux/actions/head-actions';
 // import { selectProducts } from '../../redux/selectors/home-page-selectors';
 
@@ -14,7 +15,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  // inputText: inputTextAC
+  pageNameToRedux: pageNameToReduxAC
 }, dispatch);
 
 class Cart extends Component {
@@ -47,6 +48,7 @@ class Cart extends Component {
   }
 
   async componentDidMount() {
+    this.props.pageNameToRedux('Корзина');
     if (this.props.cart) {
       await this.setState({ cart: this.props.cart });
     } else {

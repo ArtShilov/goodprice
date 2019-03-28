@@ -4,7 +4,9 @@ import { bindActionCreators } from 'redux';
 import CardProduct from '../card-product/card-product';
 import SubFilter from '../sub-filter/sub-filter';
 import './home-page.css';
-import { productsToReduxAC, cartToReduxAC, showProductsAC } from '../../redux/actions/home-page-actions';
+import {
+  productsToReduxAC, cartToReduxAC, showProductsAC, pageNameToReduxAC
+} from '../../redux/actions/home-page-actions';
 import { selectProducts, selectCart, selectShowProducts } from '../../redux/selectors/home-page-selectors';
 import { selectSearchText } from '../../redux/selectors/header-selector';
 
@@ -18,7 +20,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => bindActionCreators({
   cartToRedux: cartToReduxAC,
   productsToRedux: productsToReduxAC,
-  showProducts: showProductsAC
+  showProducts: showProductsAC,
+  pageNameToRedux: pageNameToReduxAC
 }, dispatch);
 
 class HomePage extends Component {
@@ -30,6 +33,7 @@ class HomePage extends Component {
     this.getCart();
     this.getShops();
     this.getProducts();
+    this.props.pageNameToRedux('Каталог');
   }
 
   handleClickCardBtn = (articul) => {
