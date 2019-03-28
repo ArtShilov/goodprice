@@ -33,12 +33,12 @@ router.get('/login', renderWelcome);
 router.get('/profile', authenticationMiddleware(), renderProfile);
 router.get('/auth/facebook', passport.authenticate('facebook'));
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/user/profile',
+  successRedirect: '/profile',
   failureRedirect: '/user/login'
 }));
 router.get('/auth/facebook/callback',
   passport.authenticate('facebook', {
-    successRedirect: '/user/profile',
+    successRedirect: '/profile',
     failureRedirect: '/user/login'
   }));
 

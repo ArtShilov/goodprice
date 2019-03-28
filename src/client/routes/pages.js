@@ -15,6 +15,10 @@ export const PAGES = {
     name: 'cart',
     path: '/cart'
   },
+  profile: {
+    name: 'profile',
+    path: '/profile'
+  },
   page404: {
     name: 'page404',
     path: '/page404'

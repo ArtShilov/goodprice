@@ -2,19 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 // import Type from 'prop-types';
-import { Link } from 'react-router-dom';
-import { push } from 'connected-react-router';
-// import elbrusImg from './elbrus.png';
-import { PAGES } from '../../routes/pages';
+// import { push } from 'connected-react-router';
+// import { PAGES } from '../../routes/pages';
 import { bemClassNameFactory } from '../../utils/bem';
-import { sayByeAC, sayHiAC } from '../../redux/actions/app-actions';
-import { fetchUserStartAC, fetchUserSuccessAC, fetchUserErrorAC } from '../../redux/actions/user-actions';
-import { fetchPostsThunkAC } from '../../redux/actions/post-actions';
-import { selectSay } from '../../redux/selectors/app-selectors';
-import { selectPathname } from '../../redux/selectors/router-selectors';
-import { selectUser, selectIsUserFetching } from '../../redux/selectors/user-selectors';
-import { selectPosts, selectIsPostsFetching } from '../../redux/selectors/post-selectors';
-import { selectLogin } from '../../redux/selectors/login-selectors';
+import { usernameToReduxAC } from '../../redux/actions/app-actions';
+import { selectUsername } from '../../redux/selectors/app-selectors';
 import Header from '../header/header';
 import Breadcrumbs from '../breadcrumbs/breadcrumbs';
 import Footer from '../footer/footer';
@@ -23,26 +15,36 @@ import './app.css';
 const cn = bemClassNameFactory('app');
 
 const mapStateToProps = state => ({
-  say: selectSay(state),
-  pathname: selectPathname(state),
-  userInfo: selectUser(state),
-  isUserFetching: selectIsUserFetching(state),
-  posts: selectPosts(state),
-  isPostsFetching: selectIsPostsFetching(state),
-  login: selectLogin(state)
+  usernameFromRedux: selectUsername(state)
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  sayBye: sayByeAC,
-  sayHi: sayHiAC,
-  doRoute: push,
-  fetchUserStart: fetchUserStartAC,
-  fetchUserSuccess: fetchUserSuccessAC,
-  fetchUserError: fetchUserErrorAC,
-  fetchPosts: fetchPostsThunkAC
+  usernameToRedux: usernameToReduxAC
 }, dispatch);
 
 class App extends Component {
+  state = {
+    username: ''
+  }
+
+
+  getUser = async () => {
+    try {
+      const response = await fetch('/api/user');
+      if (response.status === 200) {
+        const username = await response.json();
+        await this.setState({ username });
+        this.props.usernameToRedux(username);
+      }
+    } catch (e) {
+    }
+  };
+
+  componentDidMount() {
+    this.getUser();
+  }
+
+
   render() {
     const {
       children
@@ -57,18 +59,6 @@ class App extends Component {
         </div>
         <Footer />
       </div >
-    );
-  }
-
-  renderMenu() {
-    return (
-      <div className={cn('menu')}>
-        <div><Link to={PAGES.home.path}>Home Page</Link></div>
-        <div><Link to={PAGES.info.path}>Info Page</Link></div>
-        <div><Link to={PAGES.page404.path}>Page 404</Link></div>
-        <div><Link to={PAGES.login.path}>Login</Link></div>
-        <div>{this.props.login}</div>
-      </div>
     );
   }
 }

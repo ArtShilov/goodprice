@@ -9,6 +9,7 @@ import Page404 from '../components/page404/page404';
 import Login from '../components/login';
 import CardProduct from '../components/card-product/card-product';
 import BigProduct from '../components/big-product/big-product';
+import Profile from '../components/profile/profile';
 
 
 const WrappedApp = (Component, props) => (
@@ -26,6 +27,10 @@ export default () => (
     <Route
     exact path={ PAGES.home.path }
       render={ props => WrappedApp(HomePage, props) }
+    />
+    <Route
+    exact path={ PAGES.profile.path }
+      render={ props => WrappedApp(Profile, props) }
     />
     <Route
        path={ PAGES.BigProduct.path }

@@ -1,7 +1,31 @@
 import React, { Component } from 'react';
 import './breadcrumbs.css';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
+import { selectUsername } from '../../redux/selectors/app-selectors';
 
-export default class Breadcrumbs extends Component {
+const mapStateToProps = state => ({
+  usernameFromRedux: selectUsername(state)
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+}, dispatch);
+
+class Breadcrumbs extends Component {
+  viewAuth = () => {
+    const { usernameFromRedux } = this.props;
+    if (usernameFromRedux !== undefined) {
+      return <div><Link to='/profile'>{usernameFromRedux}</Link>
+        <a href="/user/logout">Выйти</a>
+      </div>;
+    }
+    return <div> <a href="/user/signup">Регистрация</a>
+      <a href="/user/login">Войти</a>
+    </div>;
+  }
+
+
   render() {
     return (
       <div className="xf-wrapper relative">
@@ -14,6 +38,9 @@ export default class Breadcrumbs extends Component {
           </li>
         </ul>
         <a className="absolute" data-toggle="modal" data-target="#exampleModalCenter">Войти</a>
+        <div className="absolute">
+          {this.viewAuth()}
+        </div>
         <div>
           <h1 className="xf-caption__title">Каталог товаров</h1>
         </div>
@@ -28,18 +55,12 @@ export default class Breadcrumbs extends Component {
               </div>
               <div class="modal-body">
                 <form action="/user/login" method="post">
-                  <div>
-                    <label class="labelClass">Username:</label>
-                    <input type="text" name="username" />
-                  </div>
-                  <div>
-                    <label class="labelClass">Password:</label>
-                    <input type="password" name="password" />
-                  </div>
-                  <div>
-                    <input class="btn btn-primary" type="submit" value="Log In" />
-                  </div>
+                  <input name="username" id="username" type="text" placeholder="Your username" />
+                  <input name="password" id="password" type="password" placeholder="Your password" />
+                  <input type="submit" />
                 </form>
+
+                <a href="/user/auth/facebook">Login or Register with Facebook</a>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -53,6 +74,7 @@ export default class Breadcrumbs extends Component {
   }
 }
 
+<<<<<<< HEAD
 // < !--Button trigger modal-- >
 //   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
 //     Запустить модальное окно
@@ -78,3 +100,11 @@ export default class Breadcrumbs extends Component {
 //         </div>
 //       </div>
 //     </div>
+=======
+
+const BreadcrumbsApp = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Breadcrumbs);
+export default BreadcrumbsApp;
+>>>>>>> 5f7c53cd62d0d4d120a1b90ce8762fa4ea1550a2
