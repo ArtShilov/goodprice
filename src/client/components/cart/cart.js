@@ -256,7 +256,7 @@ class Cart extends Component {
       return (
         <div>
 
-      <div class='cart-save-button'> <div className='cart-save'>
+      <div className='cart-save-button'> <div className='cart-save'>
       {this.viewButton()} <h3 className='cart-list'>Список продуктов:</h3></div> <div>
       <div className='shops-name'>{this.viewShopNames()} </div></div>
       </div>
