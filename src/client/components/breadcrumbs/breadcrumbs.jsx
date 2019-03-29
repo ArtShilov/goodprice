@@ -67,7 +67,7 @@ class Breadcrumbs extends Component {
                     <label htmlFor="exampleInputPassword1">Password</label>
                     <input name="password" type="password" className="form-control" placeholder="Password" />
                   </div>
-                  <button type="submit" className="btn btn-secondary">Submit</button>
+                  <button type="submit" className="btn btn-secondary">Войти</button>
                   <div className="footer-social__item _fb footer-social__item-modal">
                     <a className="footer-social__link" href="/user/auth/facebook" title="Facebook">
                       <svg id="svg__facebook" viewBox="0 0 32 32" width="100%" height="100%">
@@ -111,7 +111,7 @@ class Breadcrumbs extends Component {
                     <label htmlFor="exampleInputPassword1">Password</label>
                     <input name="password" type="password" className="form-control" placeholder="Password" />
                   </div>
-                  <button type="submit" className="btn btn-secondary">Submit</button>
+                  <button type="submit" className="btn btn-secondary">Зарегистрироваться</button>
                   <div className="footer-social__item _fb footer-social__item-modal">
                     <a className="footer-social__link" href="/user/auth/facebook" title="Facebook">
                       <svg id="svg__facebook" viewBox="0 0 32 32" width="100%" height="100%">

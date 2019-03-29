@@ -8,12 +8,27 @@ const authenticationMiddleware = require('./middleware');
 async function findUser(username, callback) {
   let user = await Users.findOne({ username });
   if (user !== null) {
+    console.log('TCL: findUser -> user username', user);
     return callback(null, user);
   }
-  user = await Users.findOne({ facebook: username });
+  // user = await Users.findOne({ facebook: username });
+  // if (user !== null) {
+  //   console.log('TCL: findUser -> user', user);
+  //   return callback(null, user);
+  // }
+
+  user = await Users.findOne({ _id: username._id });
   if (user !== null) {
+    console.log('TCL: findUser -> user _id', user);
     return callback(null, user);
   }
+
+  user = await Users.findOne({ facebook: username.id });
+  if (user !== null) {
+    console.log('TCL: findUser -> user facebook', user);
+    return callback(null, user);
+  }
+
 
   return callback(null);
 }
@@ -23,7 +38,9 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((user, done) => {
-  findUser(user.id, done);
+  console.log('TCL: user', user);
+  console.log(user);
+  findUser(user, done);
 });
 
 
@@ -38,6 +55,7 @@ function initPassport() {
           console.log('User not found');
           return done(null, false);
         }
+        console.log(user);
         bcrypt.compare(password, user.password, (err, isValid) => { // eslint-disable-line
           if (err) {
             return done(err);
