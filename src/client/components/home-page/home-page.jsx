@@ -186,9 +186,9 @@ class HomePage extends Component {
 
     const renderPageNumbers = pageNumbers.map((number) => {
       if (this.state.currentPage === number) {
-        return (<a onClick={this.handleClickPagination} className="paginator-activ paginator__item js-paginator__btn" data-type="btn" id={number}>{number}</a>);
+        return (<a key={number} onClick={this.handleClickPagination} className="paginator-activ paginator__item js-paginator__btn" data-type="btn" id={number}>{number}</a>);
       }
-      return (<a onClick={this.handleClickPagination} className="paginator__item js-paginator__btn" data-type="btn" id={number}>{number}</a>);
+      return (<a key={number} onClick={this.handleClickPagination} className="paginator__item js-paginator__btn" data-type="btn" id={number}>{number}</a>);
     });
 
     return (
