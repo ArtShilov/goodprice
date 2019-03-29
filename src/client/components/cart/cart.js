@@ -109,16 +109,27 @@ class Cart extends Component {
     ));
   }
 
+  viewShopNames = () => {
+    const { optionsArray } = this.state;
+    return optionsArray.map(item => (
+      <div key={item.shop}>
+      <h3 className="catalog-market__text" ><a href={`http://www.${item.shop}`}>{item.shop}</a> </h3>
+      <span className="catalog-market__text" >Цена корзины: {item.total.toFixed(2)} руб. </span>
+      </div>
+    ));
+  }
+
   viewOptions = () => {
     const { optionsArray } = this.state;
     return optionsArray.map(item => (
-     <CartOption key={item.shop} name={item.shop} total={item.total} absence={item.absence} />
+     <CartOption key={item.shop} name={item.shop}
+     total={item.total} absence={item.absence} cartProducts={item.cartProducts} />
     ));
   }
 
   viewButton = () => {
     if (!this.props.cart) {
-      return <div class='cart-save-button'>
+      return <div >
       <button type="button" class="btn btn-success" onClick={() => this.saveCart()}>Сохранить корзину</button>
       <span>{this.state.saveMessage}</span></div>;
     }
@@ -168,29 +179,49 @@ class Cart extends Component {
       const shopObj = {};
       shopObj.shop = shop;
       shopObj.absence = [];
+      shopObj.cartProducts = [];
       for (const product of cart) { // eslint-disable-line
         let presence = false;
+        let productForCart = {};
         for (const item of shopsArray) { // eslint-disable-line
           if (item.name === shop) {
-            if ((item.product_id === product._id) && (item.presence === 1)) { // eslint-disable-line
-              const price = item.price * product.quantity;
-              if ('total' in shopObj) {
-                shopObj.total += price;
-                presence = true;
-              } else {
-                shopObj.total = price;
-                presence = true;
+            if (item.product_id === product._id) { // eslint-disable-line
+              if (item.presence === 1) {
+                const price = item.price * product.quantity;
+                if ('total' in shopObj) {
+                  shopObj.total += price;
+                  presence = true;
+                } else {
+                  shopObj.total = price;
+                  presence = true;
+                }
+                // debugger
+                productForCart = {
+                  id: product._id,
+                  productName: product.name,
+                  productPrice: item.price,
+                  productTotal: item.price * product.quantity
+                };
+                shopObj.cartProducts.push(productForCart);
               }
             }
           }
         }
         if (!presence) {
+          // debugger
+          productForCart = {
+            id: product._id,
+            productName: product.name,
+            productPrice: '-',
+            productTotal: '-'
+          };
+          shopObj.cartProducts.push(productForCart);
           shopObj.absence.push(product);
         }
       }
       optionsArray.push(shopObj);
     });
-    console.log('TCL: Cart -> getAvailibleOptions -> optionsArray', optionsArray);
+    // console.log('TCL: Cart -> getAvailibleOptions -> optionsArray', optionsArray);
     optionsArray.sort((a, b) => {
       if ((a.absence.length === 0) && (a.absence.length === 0)) {
         if (a.total > b.total) {
@@ -205,22 +236,26 @@ class Cart extends Component {
       return 0;
     });
     this.setState({ optionsArray });
-    console.log('TCL: Cart -> getAvailibleOptions -> optionsArray', optionsArray);
+    // console.log('TCL: Cart -> getAvailibleOptions -> optionsArray', optionsArray);
   }
 
   render() {
     if (this.state.cart.length > 0) {
       return (
-      <div >
-      {this.viewButton()}
+        <div>
+
+      <div class='cart-save-button'>
+      {this.viewButton()}  <div><div>Возможные варианты покупки:</div> <div className='shops-name'>{this.viewShopNames()} </div></div>
+      </div>
       <div className='cart-flex'>
       <div>
         {this.viewCart()} </div>
-      <div className='shops'>Возможные варианты покупки:
-        <ul >{this.viewOptions()}</ul>
+        <div className='shops'>
+       {this.viewOptions()}
       </div>
       </div>
-      </div>);
+      </div>
+      );
     }
     return (<div>
        К сожалению, корзина пуста.
