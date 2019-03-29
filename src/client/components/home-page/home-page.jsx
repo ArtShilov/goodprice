@@ -76,13 +76,9 @@ class HomePage extends Component {
 
   viewCards = () => {
     const { currentPage, productsPerPage } = this.state;
-    console.log('TCL: HomePage -> viewCards -> currentPage', currentPage);
     const { showProducts1 } = this.props;
-    console.log('TCL: HomePage -> viewCards -> showProducts1', showProducts1);
     const indexOfLastproduct = currentPage * productsPerPage;
-    console.log('TCL: HomePage -> viewCards -> indexOfLastproduct', indexOfLastproduct);
     const indexOfFirstproduct = indexOfLastproduct - productsPerPage;
-    console.log('TCL: HomePage -> viewCards -> indexOfFirstproduct', indexOfFirstproduct);
     const currentproducts = showProducts1.slice(indexOfFirstproduct, indexOfLastproduct);
 
     return currentproducts.map(item => (
