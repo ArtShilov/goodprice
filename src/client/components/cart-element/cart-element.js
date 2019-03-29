@@ -10,8 +10,8 @@ export default class CartElement extends Component {
           <div className="catalog-market__link cart-element-flex-column">
             <span className="catalog-market__text cart-element-product-name" >{this.props.name}</span>
             <span >
-              <button type="button" className="btn btn-success" onClick={(e, operation, product) => this.props.onClick(e, 'decrease', this.props.product)}>-</button>  {this.props.quantity}  шт
-              <button type="button" className="btn btn-success" onClick={(e, operation, product) => this.props.onClick(e, 'increase', this.props.product)}>+</button>
+              <button type="button" className="btn btn-success btn-cart-element" onClick={(e, operation, product) => this.props.onClick(e, 'decrease', this.props.product)}>-</button>  {this.props.quantity}  шт
+              <button type="button" className="btn btn-success btn-cart-element" onClick={(e, operation, product) => this.props.onClick(e, 'increase', this.props.product)}>+</button>
             </span>
           </div>
         </Link>
