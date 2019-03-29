@@ -38,7 +38,7 @@ router.post('/login', passport.authenticate('local', {
 }));
 router.get('/auth/facebook/callback',
   passport.authenticate('facebook', {
-    successRedirect: '/profile',
+    successRedirect: '/',
     failureRedirect: '/user/login'
   }));
 
