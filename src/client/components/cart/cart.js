@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import Shop from '../shop/shop';
 import CartElement from '../cart-element/cart-element';
 import CartOption from '../cart-option/cart-option';
+import { selectUsername } from '../../redux/selectors/app-selectors';
 // import { inputTextAC } from '../../redux/actions/head-actions';
 // import { selectProducts } from '../../redux/selectors/home-page-selectors';
 import {
@@ -14,8 +15,8 @@ import { selectProducts, selectCart, selectShowProducts } from '../../redux/sele
 
 
 const mapStateToProps = state => ({
-  cartFromRedux: selectCart(state)
-
+  cartFromRedux: selectCart(state),
+  usernameFromRedux: selectUsername(state)
   // productsFromRedux: selectProducts(state)
 });
 
@@ -100,6 +101,7 @@ class Cart extends Component {
     this.getAvailibleOptions(cart);
   }
 
+
   viewCart = () => {
     const { cart } = this.state;
     return cart.map(item => (
@@ -109,12 +111,22 @@ class Cart extends Component {
     ));
   }
 
+  renderShopLink = (item) => {
+    switch (item) {
+      case 'utkonos.ru': return <h3><a className="link-shop-product" href={`http://www.${item}`}>Утконос</a></h3>;
+      case 'instamart.ru': return <h3><a className="link-shop-product" href={`http://www.${item}`}>Инстамарт</a></h3>;
+      case 'perekrestok.ru': return <h3><a className="link-shop-product" href={`http://www.${item}`}>Перекресток</a></h3>;
+      default:
+    }
+  }
+
+
   viewShopNames = () => {
     const { optionsArray } = this.state;
     return optionsArray.map(item => (
-      <div key={item.shop}>
-      <h3 className="catalog-market__text" ><a href={`http://www.${item.shop}`}>{item.shop}</a> </h3>
-      <span className="catalog-market__text" >Цена корзины: {item.total.toFixed(2)} руб. </span>
+      <div className='shop-name' key={item.shop}>
+      {this.renderShopLink(item.shop)}
+      <span className="catalog-market__text" >Цена корзины: <br/> {item.total.toFixed(2)} руб. </span>
       </div>
     ));
   }
@@ -128,7 +140,7 @@ class Cart extends Component {
   }
 
   viewButton = () => {
-    if (!this.props.cart) {
+    if ((!this.props.cart) && (this.props.usernameFromRedux !== undefined)) {
       return <div >
       <button type="button" class="btn btn-success" onClick={() => this.saveCart()}>Сохранить корзину</button>
       <span>{this.state.saveMessage}</span></div>;
@@ -244,8 +256,9 @@ class Cart extends Component {
       return (
         <div>
 
-      <div class='cart-save-button'>
-      {this.viewButton()}  <div><div>Возможные варианты покупки:</div> <div className='shops-name'>{this.viewShopNames()} </div></div>
+      <div class='cart-save-button'> <div className='cart-save'>
+      {this.viewButton()} <h3 className='cart-list'>Список продуктов:</h3></div> <div>
+      <div className='shops-name'>{this.viewShopNames()} </div></div>
       </div>
       <div className='cart-flex'>
       <div>
