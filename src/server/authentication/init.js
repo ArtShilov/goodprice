@@ -17,13 +17,13 @@ async function findUser(username, callback) {
   //   return callback(null, user);
   // }
 
-  user = await Users.findOne({ _id: username._id });
+  user = await Users.findOne({ _id: username });
   if (user !== null) {
     console.log('TCL: findUser -> user _id', user);
     return callback(null, user);
   }
 
-  user = await Users.findOne({ facebook: username.id });
+  user = await Users.findOne({ facebook: username });
   if (user !== null) {
     console.log('TCL: findUser -> user facebook', user);
     return callback(null, user);
@@ -40,7 +40,7 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((user, done) => {
   console.log('TCL: user', user);
   console.log(user);
-  findUser(user, done);
+  findUser(user.id, done);
 });
 
 
