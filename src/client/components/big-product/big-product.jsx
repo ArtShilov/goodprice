@@ -92,7 +92,7 @@ class BigProductPage extends Component {
       <div className='flex'>
         <div className="card-big-product">
           <CardProduct img={this.state.product.img} name={this.state.product.name}
-            price={this.state.product.lowPrice} maxPrice={this.state.product.maxPrice} />
+            price={this.state.product.lowPrice} maxPrice={this.state.product.maxPrice} id={this.state.product._id} />
         </div>
         <div>{this.viewShops()}</div>
         <ul className="js-b _catalog-under-filters banner-big-product" data-id="block_19">
