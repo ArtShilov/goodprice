@@ -17,11 +17,11 @@ async function findUser(username, callback) {
   //   return callback(null, user);
   // }
 
-  user = await Users.findOne({ _id: username });
-  if (user !== null) {
-    console.log('TCL: findUser -> user _id', user);
-    return callback(null, user);
-  }
+  // user = await Users.findOne({ _id: username });
+  // if (user !== null) {
+  //   console.log('TCL: findUser -> user _id', user);
+  //   return callback(null, user);
+  // }
 
   user = await Users.findOne({ facebook: username });
   if (user !== null) {
