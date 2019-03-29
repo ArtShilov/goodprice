@@ -7,6 +7,7 @@ import CardProduct from '../card-product/card-product';
 // import { inputTextAC } from '../../redux/actions/head-actions';
 import { selectProducts } from '../../redux/selectors/home-page-selectors';
 import { pageNameToReduxAC } from '../../redux/actions/home-page-actions';
+import elbrus from '../home-page/elbrus.png';
 
 
 const mapStateToProps = state => ({
@@ -80,8 +81,8 @@ class BigProductPage extends Component {
     console.log(shops);
     return shops.map(item => (
       <Shop key={item._id} name={item.name} price={item.price} // eslint-disable-line
-      presence={this.getPresence(item.presence)} lastUpdate={item.lastUpdate}
-      link={item.link} />
+        presence={this.getPresence(item.presence)} lastUpdate={item.lastUpdate}
+        link={item.link} />
     ));
   }
 
@@ -89,9 +90,18 @@ class BigProductPage extends Component {
   render() {
     return (
       <div className='flex'>
-      <CardProduct img={this.state.product.img} name={this.state.product.name}
-      price={this.state.product.lowPrice} maxPrice={this.state.product.maxPrice}/>
-      <div>{this.viewShops()}</div>
+        <div className="card-big-product">
+          <CardProduct img={this.state.product.img} name={this.state.product.name}
+            price={this.state.product.lowPrice} maxPrice={this.state.product.maxPrice} id={this.state.product._id} />
+        </div>
+        <div>{this.viewShops()}</div>
+        <ul className="js-b _catalog-under-filters banner-big-product" data-id="block_19">
+            <li className="js-carousel__item swiper-slide" data-id="banner__1182">
+              <a href="https://elbrusboot.camp/">
+                <img width='220px' src={elbrus} className="banner-img" />
+              </a>
+            </li>
+          </ul>
       </div>
     );
   }
