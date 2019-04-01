@@ -5,10 +5,10 @@
 ## Our Mission
 
 ## Getting Started
+```
 npm install
-
-
 npm run start-dev 
+```
 
 ## MVP Functionality
 * Выбор товара
@@ -29,6 +29,6 @@ npm run start-dev
 
 ## Contributing
 
-We conform to the [AirBnB Ruby Style Guide](http://airbnb.io/projects/ruby) and the [AirBnB JavaScript Style Guide](http://airbnb.io/projects/javascript)
+We conform to the [AirBnB JavaScript Style Guide](http://airbnb.io/projects/javascript)
 
 
