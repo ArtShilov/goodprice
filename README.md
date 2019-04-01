@@ -3,6 +3,8 @@
 **Goodprice** - Cервис с помощью которого можно найти самые низкие цены на продукты питания в интернет магазинах.
 
 ## Our Mission
+![goodprice](/goodprice.png)
+
 
 ## Getting Started
 ```
